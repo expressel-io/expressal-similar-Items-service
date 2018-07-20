@@ -1,50 +1,51 @@
 const mongoose = require('mongoose');
-var faker = require('faker');
+const faker = require('faker');
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
 
-var shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
+let shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
 
 // var imageFunc = function () {
 //   var imagePath = 
 // }
 
-var idFunc = function () {
+let idFunc = function () {
   return Math.floor(Math.random() * Math.floor(5000));  
 };
 
-var priceFunc = function () {
-  var a =  Math.floor(Math.random() * Math.floor(5000));
-  return (faker.commerce.price(.10,a,2,"$"));
-} 
+let priceFunc = function () {
+   var a =  Math.floor(Math.random() * Math.floor(5000));
+  return faker.commerce.price(.10,a,2,"$");
+}; 
 
-var deliveryCostFunc = function () {
+let deliveryCostFunc = function () {
   return 'Free delivery'; 
 };
 
-var randomDate = function (start, end) {
+let randomDate = function (start, end) {
   for (var i =0 ; i < 100; i++) {
-  var dateNew = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  dateOfDeliveryArr.push(dateNew);
-}   
+    var dateNew = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return dateNew;
+  }
+};   
 
-var descFunc = function () {
+let descFunc = function () {
   return (faker.commerce.productName());
 };
 
-var ratingNum = function() {
+let ratingNum = function() {
   return Math.floor(Math.random() * Math.floor(1000));
 };
 
-var shopSelect = function () {
+let shopSelect = function () {
   var max = shopsAvalAtArr.length
   var indexNum = Math.floor(Math.random(0) * Math.floor(max));
   return shopsAvalAtArr[indexNum];
 }
 
-var itemList = [];
+let itemList = [];
 
-var populateData = function () {
+let populateData = function () {
   for (var i =0 ; i < 100; i++) {
     var item = {
       id: idFunc(),
@@ -58,18 +59,19 @@ var populateData = function () {
     itemList.push(item);
   }
 }
+populateData();
 
 let prodSchema = mongoose.Schema({ 
   id : Number,
-  price: Number,
-  deliveryCost: Number,
+  price: String,
+  deliveryCost: String,
   dateOfDelivery: String,
   desc: String,
   rating: Number,
-  shopsAvalAt: String,
+  shopsAvalAt: String
 });
 
-var db = mongoose.connection;
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 console.log('we are connected!');
@@ -77,24 +79,34 @@ console.log('we are connected!');
 
 let Prod = mongoose.model('Prod', prodSchema);
 
-let save = (prods, cb) => {
+let saveList = (itemList, cb) => {
    
-  for (let i = 0; i < prods.length; i++) {
-    newProd = new Prod ({
-    id: prods[i].id,
-    price: prods[i].price,
-    deliveryCost: prods.deliveryCost,
-    dateOfDelivery: prods.dateOfDelivery,
-    desc: prods[i].desc,
-    rating: prods[i].rating,
-    shopsAvalAt: prods[i].shopsAvalAt,
+  for (let i = 0; i < itemList.length; i++) {
+    const newProd = new Prod ({
+    id: itemList[i].id,
+    price: itemList[i].price,
+    deliveryCost: itemList[i].deliveryCost,
+    dateOfDelivery: itemList[i].dateOfDelivery,
+    desc: itemList[i].desc,
+    rating: itemList[i].rating,
+    shopsAvalAt: itemList[i].shopsAvalAt
     // img: { data: Buffer, contentType: String }
     });
 
     newProd.save(cb);
   }
 
-}
+};
 
-module.exports.save = save;
-////////////////////////
+saveList(itemList,  (err, product) => {
+  if (err) {
+    console.log(err); 
+  } else {
+    console.log(product);
+  }
+});
+
+
+
+module.exports.saveList = saveList;
+module.exports.itemList = itemList;
