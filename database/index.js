@@ -107,4 +107,6 @@ saveList(itemList,  (err, product) => {
 });
 
 
+
 module.exports.saveList = saveList;
+module.exports.itemList = itemList;
