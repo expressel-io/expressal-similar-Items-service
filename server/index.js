@@ -1,7 +1,7 @@
 const express = require('express');
 let app = express();
-var fs = require('fs');
-const DB = require('../database/index.js');
+//var fs = require('fs');
+//const DB = require('../database/index.js');
 // const Repos = require('../helpers/github.js');
 var bodyParser = require('body-parser')
 
@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 
 var MongoClient = require('mongodb').MongoClient
 
+console.log('I am here');
 
 app.use(express.static(__dirname + '/../client/dist'));
 

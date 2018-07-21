@@ -110,3 +110,5 @@ saveList(itemList,  (err, product) => {
 
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;
+module.exports.priceFunc = priceFunc;
+module.exports.shopSelect = shopSelect;
