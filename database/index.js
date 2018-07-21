@@ -1,51 +1,51 @@
 const mongoose = require('mongoose');
-var faker = require('faker');
+const faker = require('faker');
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
 
-var shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
+let shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
 
 // var imageFunc = function () {
 //   var imagePath = 
 // }
 
-var idFunc = function () {
+let idFunc = function () {
   return Math.floor(Math.random() * Math.floor(5000));  
 };
 
-var priceFunc = function () {
+let priceFunc = function () {
    var a =  Math.floor(Math.random() * Math.floor(5000));
   return faker.commerce.price(.10,a,2,"$");
 }; 
 
-var deliveryCostFunc = function () {
+let deliveryCostFunc = function () {
   return 'Free delivery'; 
 };
 
-var randomDate = function (start, end) {
+let randomDate = function (start, end) {
   for (var i =0 ; i < 100; i++) {
     var dateNew = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     return dateNew;
   }
 };   
 
-var descFunc = function () {
+let descFunc = function () {
   return (faker.commerce.productName());
 };
 
-var ratingNum = function() {
+let ratingNum = function() {
   return Math.floor(Math.random() * Math.floor(1000));
 };
 
-var shopSelect = function () {
+let shopSelect = function () {
   var max = shopsAvalAtArr.length
   var indexNum = Math.floor(Math.random(0) * Math.floor(max));
   return shopsAvalAtArr[indexNum];
 }
 
-var itemList = [];
+let itemList = [];
 
-var populateData = function () {
+let populateData = function () {
   for (var i =0 ; i < 100; i++) {
     var item = {
       id: idFunc(),
@@ -71,7 +71,7 @@ let prodSchema = mongoose.Schema({
   shopsAvalAt: String
 });
 
-var db = mongoose.connection;
+let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 console.log('we are connected!');
