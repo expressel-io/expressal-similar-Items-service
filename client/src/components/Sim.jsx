@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+// import $ from 'jquery';
 import axios from 'axios';
 
 export default class Sim extends Component {  
@@ -11,6 +11,18 @@ export default class Sim extends Component {
       highLimit: 5
     } 
     this.handleClick = this.handleClick.bind(this);
+  }
+  
+  componentWillMount () {
+    this.handleClick();
+    var self = this;
+    axios.get('/items')
+      .then(function (response) {
+        self.setState({itemList : response.data})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   handleClick() {
@@ -25,7 +37,7 @@ export default class Sim extends Component {
       <div className="images-view">
         <select  onClick={this.handleClick}>
           {this.state.itemList.map((elem, index, limit) => {
-              if ( lowLimit < index < = highLimit ) {
+              if ( lowLimit < index <= highLimit ) {
                 return <select key={index} value={elem.img}>{elem.img}</select>;
               }
           })}

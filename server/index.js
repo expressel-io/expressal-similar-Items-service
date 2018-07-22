@@ -1,5 +1,6 @@
 const express = require('express');
 let app = express();
+const axios = require ('axios');
 //var fs = require('fs');
 //const DB = require('../database/index.js');
 // const Repos = require('../helpers/github.js');
@@ -23,9 +24,11 @@ app.use(express.static(__dirname + '/../client/dist'));
 //  },
 // }));
 
-app.get('/repos', function (req, res) {
+app.get('/images', function (req, res) {
 
-
+    DB.find ( (err, result) => {
+    	res.send (result);
+    });
 });
 
 
@@ -35,6 +38,12 @@ app.get('/repos', function (req, res) {
 //     // newProd.save(cb);
 // }
    
+app.get('/images', function (req, res) {
+
+    DB.find ( (err, result) => {
+    	res.send (result);
+    });
+});
 
 
 let port = 3004;

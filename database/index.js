@@ -4,46 +4,46 @@ const faker = require('faker');
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
 
-let shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
+const shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
 
 
 
-let generateIdFunc = function () {
+const generateIdFunc = function () {
   return Math.floor(Math.random() * Math.floor(5000));  
 };
 
-let generatePriceFunc = function () {
+const generatePriceFunc = function () {
    var a =  Math.floor(Math.random() * Math.floor(5000));
   return faker.commerce.price(.10,a,2,"$");
 }; 
 
-let generateDeliveryCostFunc = function () {
+const generateDeliveryCostFunc = function () {
   return 'Free delivery'; 
 };
 
-let generateRandomDate = function (start, end) {
+const generateRandomDate = function (start, end) {
   for (var i =0 ; i < 100; i++) {
     var dateNew = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     return dateNew;
   }
 };   
 
-let generateDescFunc = function () {
+const generateDescFunc = function () {
   return (faker.commerce.productName());
 };
 
-let generateRatingNum = function() {
+const generateRatingNum = function() {
   return Math.floor(Math.random() * Math.floor(1000));
 };
 
-let generateShopSelect = function () {
+const generateShopSelect = function () {
   var max = shopsAvalAtArr.length
   var indexNum = Math.floor(Math.random(0) * Math.floor(max));
   return shopsAvalAtArr[indexNum];
 }
 
-var imgPathArr = [];
-let generateImagePath = function () {
+const imgPathArr = [];
+const generateImagePath = function () {
   for (var i = 0; i < 90; i++) {
      // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
      var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
@@ -55,7 +55,7 @@ generateImagePath();
  
 let itemList = [];
 
-let populateData = function () {
+const populateData = function () {
   for (var i =0 ; i < 100; i++) {
     var item = {
       id: generateIdFunc(),
@@ -122,10 +122,13 @@ saveList(itemList,  (err, product) => {
   }
 });
 
-
+let find  = (callback) => {
+  Prod.find({}).sort('-size').limit(5).exec(callback);
+};
 
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;
+module.exports.find = find;
 
 
 
