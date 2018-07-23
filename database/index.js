@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const fs = require('fs');
+// const fs = require('fs');
 const faker = require('faker');
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
@@ -42,16 +42,16 @@ const generateShopSelect = function () {
   return shopsAvalAtArr[indexNum];
 }
 
-const imgPathArr = [];
-const generateImagePath = function () {
-  for (var i = 0; i < 90; i++) {
-     // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-     var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-     imgPathArr.push(img_var);
-  }
-     return imgPathArr;
-}
-generateImagePath();   
+// const imgPathArr = [];
+// const generateImagePath = function () {
+//   for (var i = 0; i < 90; i++) {
+//      // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
+//      var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
+//      imgPathArr.push(img_var);
+//   }
+//      return imgPathArr;
+// }
+// generateImagePath();   
  
 let itemList = [];
 
@@ -65,7 +65,7 @@ const populateData = function () {
       desc: generateDescFunc(),
       rating: generateRatingNum(),
       shopsAvalAt: generateShopSelect(),
-      imgPath: imgPathArr[i]
+      // imgPath: imgPathArr[i]
     }
     itemList.push(item);
   }
@@ -80,7 +80,7 @@ let prodSchema = mongoose.Schema({
   desc: String,
   rating: Number,
   shopsAvalAt: String,
-  img: { data: Buffer, contentType: String }
+  // img: { data: Buffer, contentType: String }
   // img: String
 });
 
@@ -103,13 +103,13 @@ let saveList = (itemList, cb) => {
     desc: itemList[i].desc,
     rating: itemList[i].rating,
     shopsAvalAt: itemList[i].shopsAvalAt,
-    img: {data: fs.readFileSync(itemList[i].imgPath),
-          contentType : 'image/png' }
+    // img: {data: fs.readFileSync(itemList[i].imgPath),
+    //       contentType : 'image/png' }
     });
-
-  }
-
   newProd.save(cb);
+  }
+  
+  
 } 
 
 
@@ -118,7 +118,7 @@ saveList(itemList,  (err, product) => {
   if (err) {
     console.log(err); 
   } else {
-    console.log(product);
+    console.log('prod', product);
   }
 });
 

@@ -24,7 +24,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 //  },
 // }));
 
-app.get('/images', function (req, res) {
+app.get('api/items', function (req, res) {
 
     DB.find ( (err, result) => {
     	res.send (result);
@@ -38,12 +38,12 @@ app.get('/images', function (req, res) {
 //     // newProd.save(cb);
 // }
    
-app.get('/images', function (req, res) {
+// app.get('/images', function (req, res) {
 
-    DB.find ( (err, result) => {
-    	res.send (result);
-    });
-});
+//     DB.find ( (err, result) => {
+//     	res.send (result);
+//     });
+// });
 
 
 let port = 3004;

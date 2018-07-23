@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-// import $ from 'jquery';
 import axios from 'axios';
+// import './App.css';
+import Items from './Items.jsx';
+import App from '../App.jsx';
+
+
 
 export default class Sim extends Component {  
   constructor(props, context) {
     super(props, context)
     this.state = {
-      itemList: [],
       lowLimit: 0,
       highLimit: 5
     } 
     this.handleClick = this.handleClick.bind(this);
   }
   
+
   componentWillMount () {
     this.handleClick();
-    var self = this;
-    axios.get('/items')
-      .then(function (response) {
-        self.setState({itemList : response.data})
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   handleClick() {
@@ -33,17 +29,22 @@ export default class Sim extends Component {
   }
 
   render() {
-    return (
+    let product = this.props.newItems.map ( (elem, index) => {
+      if ( lowLimit < index <= highLimit ) {
+        return <Items key={index} items={elem} />;
+      }
+    });
+      return (
       <div className="images-view">
         <select  onClick={this.handleClick}>
-          {this.state.itemList.map((elem, index, limit) => {
-              if ( lowLimit < index <= highLimit ) {
-                return <select key={index} value={elem.img}>{elem.img}</select>;
-              }
-          })}
+            {product}   
         </select>
       </div>
     ) 
   }
 }
 
+
+
+// before last element add a var items = this.props.itemList>map and
+// assign {the var name} just before last div element.

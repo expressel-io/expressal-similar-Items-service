@@ -1,97 +1,48 @@
 import React, { Component } from 'react'
 // import $ from 'jquery';
 import axios from 'axios';
+// import Sim from './Sim';
 
 export default class Items extends Component { 
-  constructor(props, context) {
-    super(props, context)
-    this.state = {
-      itemList: [],
-      lowLimit: 0,
-      highLimit: 5
-    } 
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentWillMount () {
-    this.handleClick();
-    var self = this;
-    axios.get('/')
-      .then(function (response) {
-        self.setState({itemList : response.data})
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-
-  handleClick() {
-    let newlowLimit = this.state.lowLimit + 5;
-    let newhighLimit = this.state.highLimit + 5;
-    this.setState({ lowLimit : newlowLimit });
-    this.setState({ highLimit : newhighLimit });
-
-  }
-
   render() {
     return (
       <div className="items-view">
         <div className = "price-view">
           <select  onClick={this.handleClick}>
-
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.price}>{elem.price}</select>;
-                }
-            })}
+            {this.props.items.price}
           </select>
         </div>
+        <br /> 
         <div className = "deliveryCost-view">
           <select  onClick={this.handleClick}>
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.deliveryCost}>{elem.deliveryCost}</select>;
-                }
-            })}
+            {this.props.items.deliveryCost}
           </select>
         </div>
+        <br /> 
         <div className = "dateOfDelivery-view">
           <select  onClick={this.handleClick}>
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.dateOfDelivery}>{elem.dateOfDelivery}</select>;
-                }
-            })}
+            {this.props.items.dateOfDelivery}
           </select>
         </div>
+        <br /> 
         <div className = "description-view">
           <select  onClick={this.handleClick}>
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.description}>{elem.desc}</select>;
-                }
-            })}
+            {this.props.items.desc}
           </select>
         </div>
+        <br /> 
         <div className = "ratings-view">
           <select  onClick={this.handleClick}>
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.rating}>{elem.rating}</select>;
-                }
-            })}
+            {this.props.items.rating}
           </select>
         </div>
-        <div className = "ratings-view">
+        <br /> 
+        <div className = "shopsAvalAt-view">
           <select  onClick={this.handleClick}>
-            {props.itemList.map((elem, index, limit ) => {
-                if ( lowLimit < index <= highLimit ) {
-                  return <select key={index} value={elem.shopsAvalAt}>{elem.shopsAvalAt}</select>;
-                }
-            })}
+            {this.props.items.shopsAvalAt}
           </select>
         </div>
+        <br /> 
          <button>Add to Cart</button>
       </div>
     );
