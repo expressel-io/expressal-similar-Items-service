@@ -1,0 +1,66 @@
+
+.Items-product-info-container {
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 4px;
+}
+
+.Items-price-column {
+    font-size: 1.43em;
+    font-weight: bold;
+    line-height: 1;
+    margin-right: 8px;
+}
+
+.Items-subtitle {
+    color: rgba(0,0,0.54);
+    font-size: 12px;
+    line-height: 16px;
+}
+
+div {
+    display: block;
+}
+
+.Items-subtitle-days {
+    background-color: #fafafa;
+}
+
+.Items-product-title {
+    color: rgba(0,0,0,0.54);
+    line-height: 1.43em;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-wrap: break-word;
+    cursor: pointer;
+}
+
+.Items-review-Count {
+    color: rgba(0,0,0.54);
+    font-size: 12px;
+    margin-left: 3px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+body {
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto','Helvetica-neue',sans-serif;
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+}
+
+html {
+    
+    -webkit-font-smoothing: antialiased;
+    
+}
