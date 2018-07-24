@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const fs = require('fs');
+// const fs = require('fs');
 const faker = require('faker');
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
@@ -65,7 +65,7 @@ const populateData = function () {
       desc: generateDescFunc(),
       rating: generateRatingNum(),
       shopsAvalAt: generateShopSelect(),
-      imgPath: imgPathArr[i]
+      // imgPath: imgPathArr[i]
     }
     itemList.push(item);
   }
@@ -102,25 +102,25 @@ let saveList = (itemList, cb) => {
     dateOfDelivery: itemList[i].dateOfDelivery,
     desc: itemList[i].desc,
     rating: itemList[i].rating,
-    shopsAvalAt: itemList[i].shopsAvalAt,
-    img: {data: fs.readFileSync(itemList[i].imgPath),
-          contentType : 'image/png' }
+    shopsAvalAt: itemList[i].shopsAvalAt
+    // img: {data: fs.readFileSync(itemList[i].imgPath),
+    //       contentType : 'image/png' }
     });
-
-  }
-
   newProd.save(cb);
+  }
+  
+  
 } 
 
 
 
-saveList(itemList,  (err, product) => {
-  if (err) {
-    console.log(err); 
-  } else {
-    console.log(product);
-  }
-});
+// saveList(itemList,  (err, product) => {
+//   if (err) {
+//     console.log(err); 
+//   } else {
+//     console.log('prod', product);
+//   }
+// });
 
 let find  = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);
