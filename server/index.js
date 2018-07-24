@@ -1,35 +1,42 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const DB = require('../database/index.js');
 let app = express();
-const axios = require ('axios');
-//var fs = require('fs');
-//const DB = require('../database/index.js');
-// const Repos = require('../helpers/github.js');
-var bodyParser = require('body-parser')
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.use(bodyParser.json());
+let port = 3004;
 
 
+app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.urlencoded({extended: true}));
 
-var MongoClient = require('mongodb').MongoClient
 
-console.log('I am here');
+let MongoClient = require('mongodb').MongoClient;
 
 app.use(express.static(__dirname + '/../client/dist'));
+
+
+app.get('/api/prods', (req, res) => {
+   console.log("what is this");
+  DB.find ( (err, prods) => {
+      if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(prods);
+    }
+  });
+});
+
+app.listen(port, function() {
+  console.log(`listening on port ${port}`);
+});
+
+////////////////
 
 // app.use(multer({ dest: ‘./uploads/’,
 //  rename: function (fieldname, filename) {
 //    return filename;
 //  },
 // }));
-
-app.get('api/items', function (req, res) {
-
-    DB.find ( (err, result) => {
-    	res.send (result);
-    });
-});
 
 
 // app.post('/api/photo',function(req,res) {
@@ -46,10 +53,5 @@ app.get('api/items', function (req, res) {
 // });
 
 
-let port = 3004;
 
-app.listen(port, function() {
-  console.log(`listening on port ${port}`);
-});
-
-////////////////
+//var fs = require('fs');

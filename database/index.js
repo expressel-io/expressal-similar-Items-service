@@ -42,16 +42,16 @@ const generateShopSelect = function () {
   return shopsAvalAtArr[indexNum];
 }
 
-// const imgPathArr = [];
-// const generateImagePath = function () {
-//   for (var i = 0; i < 90; i++) {
-//      // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-//      var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-//      imgPathArr.push(img_var);
-//   }
-//      return imgPathArr;
-// }
-// generateImagePath();   
+const imgPathArr = [];
+const generateImagePath = function () {
+  for (var i = 0; i < 90; i++) {
+     // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
+     var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
+     imgPathArr.push(img_var);
+  }
+     return imgPathArr;
+}
+generateImagePath();   
  
 let itemList = [];
 
@@ -80,7 +80,7 @@ let prodSchema = mongoose.Schema({
   desc: String,
   rating: Number,
   shopsAvalAt: String,
-  // img: { data: Buffer, contentType: String }
+  img: { data: Buffer, contentType: String }
   // img: String
 });
 
@@ -102,7 +102,7 @@ let saveList = (itemList, cb) => {
     dateOfDelivery: itemList[i].dateOfDelivery,
     desc: itemList[i].desc,
     rating: itemList[i].rating,
-    shopsAvalAt: itemList[i].shopsAvalAt,
+    shopsAvalAt: itemList[i].shopsAvalAt
     // img: {data: fs.readFileSync(itemList[i].imgPath),
     //       contentType : 'image/png' }
     });
@@ -114,13 +114,13 @@ let saveList = (itemList, cb) => {
 
 
 
-saveList(itemList,  (err, product) => {
-  if (err) {
-    console.log(err); 
-  } else {
-    console.log('prod', product);
-  }
-});
+// saveList(itemList,  (err, product) => {
+//   if (err) {
+//     console.log(err); 
+//   } else {
+//     console.log('prod', product);
+//   }
+// });
 
 let find  = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);

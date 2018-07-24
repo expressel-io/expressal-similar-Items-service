@@ -1,0 +1,31 @@
+/*product container*/
+
+.App-header {
+	display: block;
+	color: rgba(0,0,0,0.87);
+	font-family: 'Roboto','Helvetica-neue',sans-serif;
+    font-size: 14px;
+}
+
+.App-product-carousel-column {
+	flex-direction: column;
+	display: flex!important;
+}
+
+.App-title {
+    font-family: "Google Sans",sans-serif;
+    font-size: 2em;
+    font-weight: 400;
+}
+
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+  
+    font-family: 'Roboto','Helvetica-neue',sans-serif;
+    font-size: 14px;
+    
+}

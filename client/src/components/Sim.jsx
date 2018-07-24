@@ -22,23 +22,23 @@ export default class Sim extends Component {
   }
 
   handleClick() {
-    let newlowLimit = this.state.lowLimit + 5;
-    let newhighLimit = this.state.highLimit + 5;
-    this.setState({ lowLimit : newlowLimit });
-    this.setState({ highLimit : newhighLimit });
+    const newlowLimit = this.state.lowLimit + 5;
+    const newhighLimit = this.state.highLimit + 5;
+    this.setState({ lowLimit: newlowLimit });
+    this.setState({ highLimit: newhighLimit });
   }
 
   render() {
     let product = this.props.newItems.map ( (elem, index) => {
-      if ( lowLimit < index <= highLimit ) {
+      if ( this.state.lowLimit < index <= this.state.highLimit ) {
         return <Items key={index} items={elem} />;
       }
     });
       return (
       <div className="images-view">
-        <select  onClick={this.handleClick}>
+        <p  onClick={this.handleClick}>
             {product}   
-        </select>
+        </p>
       </div>
     ) 
   }

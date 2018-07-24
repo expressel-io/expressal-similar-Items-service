@@ -8,39 +8,37 @@ export default class Items extends Component {
     return (
       <div className="items-view">
         <div className = "price-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.price}
-          </select>
+          </p>
         </div>
-        <br /> 
         <div className = "deliveryCost-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.deliveryCost}
-          </select>
+          </p>
         </div>
-        <br /> 
         <div className = "dateOfDelivery-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.dateOfDelivery}
-          </select>
+          </p>
         </div>
         <br /> 
         <div className = "description-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.desc}
-          </select>
+          </p>
         </div>
         <br /> 
         <div className = "ratings-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.rating}
-          </select>
+          </p>
         </div>
         <br /> 
         <div className = "shopsAvalAt-view">
-          <select  onClick={this.handleClick}>
+          <p  onClick={this.handleClick}>
             {this.props.items.shopsAvalAt}
-          </select>
+          </p>
         </div>
         <br /> 
          <button>Add to Cart</button>
