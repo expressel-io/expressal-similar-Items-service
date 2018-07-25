@@ -35,17 +35,22 @@ export default class Items extends Component {
         <br /> 
         <div className = "Items-review-Count">
           <p  onClick={this.handleClick}>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
             {this.props.items.rating}
           </p>
         </div>
         <br /> 
-        <div className = "shopsAvalAt-view">
+        <div className = "merchantName">
           <p  onClick={this.handleClick}>
             {this.props.items.shopsAvalAt}
           </p>
         </div>
         <br /> 
-         <button>Add to Cart</button>
+         <button className="ButtonStyling">ADD TO CART</button>
       </div>
     );
   }

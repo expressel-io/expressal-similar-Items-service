@@ -46,13 +46,3 @@ export default class App extends Component {
   }
 
 }
-
-
-//     // {
-          //   test: /\.css$/,
-          //   use: [
-          //     { loader: "style-loader" },
-          //     { loader: "css-loader" },
-          //     { loader: "file-loader" }
-          //   ]
-          // }
