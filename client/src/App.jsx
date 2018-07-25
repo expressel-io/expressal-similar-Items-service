@@ -3,6 +3,7 @@ import Sim from './components/Sim.jsx';
 import Items from './components/Items.jsx';
 import axios from 'axios';
 // import Data from '../database/index.js';
+import './styles/GeneralStyles.css';
 import './styles/app.css';
 
 export default class App extends Component {

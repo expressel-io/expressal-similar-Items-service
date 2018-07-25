@@ -3,8 +3,7 @@ import axios from 'axios';
 // import './App.css';
 import Items from './Items.jsx';
 import App from '../App.jsx';
-
-
+import '../styles/Items.css';
 
 export default class Sim extends Component {  
   constructor(props, context) {
@@ -35,10 +34,12 @@ export default class Sim extends Component {
       }
     });
       return (
-      <div className="images-view">
-        <p  onClick={this.handleClick}>
+      <div className="Items-productCard">
+        <div className="Items-layoutColumn">
+          <div onClick={this.handleClick}>
             {product}   
-        </p>
+          </div>
+        </div>
       </div>
     ) 
   }
