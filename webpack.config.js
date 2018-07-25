@@ -9,15 +9,11 @@
             query: {
               presets: ['env', 'react'],
             }
+          },
+          {
+            test: /\.css$/,
+            use: ['style-loader','css-loader']
           }
-          // {
-          //   test: /\.css$/,
-          //   use: [
-          //     { loader: "style-loader" },
-          //     { loader: "css-loader" },
-          //     { loader: "file-loader" }
-          //   ]
-          // }
         ]
       },
        output: {

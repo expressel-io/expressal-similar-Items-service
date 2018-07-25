@@ -1,8 +1,8 @@
 /*product container*/
 
-.App-header {
+.App-product-carousel-container {
 	display: block;
-	color: rgba(0,0,0,0.87);
+	color: rgba(0,0,0.87);
 	font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
 }
@@ -13,8 +13,13 @@
 }
 
 .App-title {
+    display: block;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
     font-family: "Google Sans",sans-serif;
-    font-size: 2em;
+    font-size: 22px;
     font-weight: 400;
 }
 

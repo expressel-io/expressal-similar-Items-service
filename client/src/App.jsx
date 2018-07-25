@@ -3,7 +3,7 @@ import Sim from './components/Sim.jsx';
 import Items from './components/Items.jsx';
 import axios from 'axios';
 // import Data from '../database/index.js';
-import './App.css';
+import './styles/app.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App-header">
+      <div className="App-product-carousel-container">
         <div className="App-product-carousel-column">
           <div className="App-title">
             Similar Items
@@ -46,3 +46,13 @@ export default class App extends Component {
   }
 
 }
+
+
+//     // {
+          //   test: /\.css$/,
+          //   use: [
+          //     { loader: "style-loader" },
+          //     { loader: "css-loader" },
+          //     { loader: "file-loader" }
+          //   ]
+          // }
