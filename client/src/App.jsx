@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
-import Sim from './components/Sim.jsx';
-import Items from './components/Items.jsx';
 import axios from 'axios';
-// import Data from '../database/index.js';
+import Sim from './components/Sim';
 import './styles/Items.css';
-import './styles/app.css';
+import './styles/App.css';
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       itemList: [],
-    }  
+    };
   }
 
 
-  componentWillMount() {
-    let self = this;
+  componentDidMount() {
     axios.get('/api/prods')
-      .then(function(response) {
-        console.log('response is', response.data);
-        self.setState({ itemList: response.data });
-        })
-      .catch(function(error) {
-        console.log(error);
+      .then((response) => {
+        this.setState({ itemList: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }
 
@@ -36,8 +32,6 @@ export default class App extends Component {
               <div className="App-title">
                 Similar Items
                 <Sim newItems={this.state.itemList} />
-                <Items items={this.state.itemList} />
-
               </div>
             </div>
           </div>
@@ -45,5 +39,4 @@ export default class App extends Component {
       </div>
     );
   }
-
 }
