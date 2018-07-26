@@ -10,7 +10,7 @@ export default class Sim extends Component {
     super(props, context)
     this.state = {
       lowLimit: 0,
-     highLimit: 5
+     highLimit: 4
     } 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -21,8 +21,8 @@ export default class Sim extends Component {
   }
 
   handleClick() {
-    const newlowLimit = this.state.lowLimit + 5;
-    const newhighLimit = this.state.highLimit + 5;
+    const newlowLimit = this.state.lowLimit + 4;
+    const newhighLimit = this.state.highLimit + 4;
     this.setState({ lowLimit: newlowLimit, highLimit: newhighLimit });
     // this.setState({ highLimit: newhighLimit });
   }

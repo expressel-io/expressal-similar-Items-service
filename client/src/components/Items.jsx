@@ -9,30 +9,28 @@ export default class Items extends Component {
   render() {
     // console.log(data.newProd.img);
     return (
-      <div className="Items-productCard">
-       <div className="Items-layoutColumn">  
-          <div className="Items-product-info-container">
-            <ul className = "Items-column">
+         <div className="Items-product-info-container">
+            <p className = "Items-column">
               <img src={this.props.items.img} />
-            </ul>
-            <ul className = "Items-price-column">
+            </p>
+            <p className = "Items-price-column">
               <p onClick={this.handleClick}>
                 {this.props.items.price}
               </p>
-            </ul>
+            </p>
             <div className = "Items-product-info-container">
-              <ul className = "Items-subtitle">
+              <p className = "Items-subtitle">
                 <p onClick={this.handleClick}>
                   {this.props.items.deliveryCost}
                 </p>
-              </ul>
+              </p>
             </div>
             <div className = "Items-product-Info-container">
-              <ul className = "Items-subtitle-days">
+              <p className = "Items-subtitle-days">
                 <p onClick={this.handleClick}>
                   {this.props.items.dateOfDelivery}
                 </p>
-              </ul>
+              </p>
             </div>
             <br /> 
             <div className = "Items-product-title">
@@ -60,8 +58,7 @@ export default class Items extends Component {
             <br /> 
              <button className="ButtonStyling">ADD TO CART</button>
         </div>
-       </div>
-      </div>
+     
     );
   }
 

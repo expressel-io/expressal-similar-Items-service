@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 // const fs = require('fs');
 const faker = require('faker');
+
 const Schema = mongoose.schema; // added this line
 mongoose.connect('mongodb://localhost/fetcher');
 
@@ -9,7 +10,7 @@ const shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'Ado
 
 
 const generateIdFunc = function () {
-  return Math.floor(Math.random() * Math.floor(5000));  
+  return Math.floor(Math.random() * Math.floor(100));  
 };
 
 const generatePriceFunc = function () {
@@ -56,9 +57,9 @@ generateImagePath();
 let itemList = [];
 
 const populateData = function () {
-  for (var i =0 ; i < 100; i++) {
+  for (var i =1 ; i < 100; i++) {
     var item = {
-      id: generateIdFunc(),
+      id: i,
       imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),

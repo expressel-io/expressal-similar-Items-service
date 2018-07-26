@@ -1,4 +1,12 @@
-.App-product-carousel-container {
+
+#app {
+    display :flex;
+}
+
+div {
+    display: flex;
+}
+/*.App-product-carousel-container {
     display: block;
     color: rgba(0,0,0.87);
     font-family: 'Roboto','Helvetica-neue',sans-serif;
@@ -6,8 +14,8 @@
 }
 
 .App-product-carousel-column {
-    flex-direction: column;
-    display: flex!important;
+    flex-direction: row;
+    display: flex;
 }
 
 .App-title {
@@ -33,4 +41,4 @@ body {
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
     
-}
+}*/
