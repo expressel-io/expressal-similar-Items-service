@@ -34,13 +34,15 @@ export default class Sim extends Component {
       }
     });
       return (
-      <div className="Items-productCard">
-        <div className="Items-layoutColumn">
-          <div onClick={this.handleClick}>
-            {product}   
+        <div className="Items-productCard">
+          <div className="Items-layoutColumn">
+            <div className="Items-flex-container">
+              <div onClick={this.handleClick}>
+                {product}   
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     ) 
   }
 }

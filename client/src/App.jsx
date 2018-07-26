@@ -34,10 +34,11 @@ export default class App extends Component {
           <div className="App-product-carousel-container">
             <div className="App-product-carousel-column">
               <div className="App-title">
-                Similar Items
-                <Sim newItems={this.state.itemList} />
-                <Items items={this.state.itemList} />
-
+                <div className="Items-flex-container">
+                  Similar Items
+                  <Sim newItems={this.state.itemList} />
+                  <Items items={this.state.itemList} />
+                </div>
               </div>
             </div>
           </div>
