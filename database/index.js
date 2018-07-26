@@ -46,8 +46,8 @@ const imgPathArr = [];
 const generateImagePath = function () {
   for (var i = 0; i < 90; i++) {
      // var img_var = "hrsf99" + "\/" + "expressal-similar-Items-service" + "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-     var img_var =   "\/" + "images" + "\/" + "image-[" + i + "].png"; 
-     imgPathArr.push(img_var);
+     var img_var =  "\/" + "images" + "\/" + "image-" + i + ".jpg"; 
+      imgPathArr.push(img_var);
   }
      return imgPathArr;
 }
@@ -59,13 +59,14 @@ const populateData = function () {
   for (var i =0 ; i < 100; i++) {
     var item = {
       id: generateIdFunc(),
+      imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),
       dateOfDelivery: generateRandomDate(new Date(2012, 0, 1), new Date()),
       desc: generateDescFunc(),
       rating: generateRatingNum(),
-      shopsAvalAt: generateShopSelect(),
-      // imgPath: imgPathArr[i]
+      shopsAvalAt: generateShopSelect()
+      
     }
     itemList.push(item);
   }
@@ -80,8 +81,8 @@ let prodSchema = mongoose.Schema({
   desc: String,
   rating: Number,
   shopsAvalAt: String,
-  img: { data: Buffer, contentType: String }
-  // img: String
+  //img: { data: Buffer, contentType: String }
+  img: String
 });
 
 let db = mongoose.connection;
@@ -97,14 +98,15 @@ let saveList = (itemList, cb) => {
   for (let i = 0; i < itemList.length; i++) {
     const newProd = new Prod ({
     id: itemList[i].id,
+     img: imgPathArr[i],
     price: itemList[i].price,
     deliveryCost: itemList[i].deliveryCost,
     dateOfDelivery: itemList[i].dateOfDelivery,
     desc: itemList[i].desc,
     rating: itemList[i].rating,
     shopsAvalAt: itemList[i].shopsAvalAt
-    // img: {data: fs.readFileSync(itemList[i].imgPath),
-    //       contentType : 'image/png' }
+   
+    //'/f/folder/images/.png' //url of image path
     });
   newProd.save(cb);
   }
@@ -114,13 +116,13 @@ let saveList = (itemList, cb) => {
 
 
 
-// saveList(itemList,  (err, product) => {
-//   if (err) {
-//     console.log(err); 
-//   } else {
-//     console.log('prod', product);
-//   }
-// });
+saveList(itemList,  (err, product) => {
+  if (err) {
+    console.log(err); 
+  } else {
+    console.log('prod', product);
+  }
+});
 
 let find  = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);

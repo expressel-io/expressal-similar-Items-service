@@ -14,9 +14,11 @@ let MongoClient = require('mongodb').MongoClient;
 
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.use('/static', express.static(path.join(__dirname, 'public')))
+
 
 app.get('/api/prods', (req, res) => {
-   console.log("what is this");
+   
   DB.find ( (err, prods) => {
       if (err) {
       res.status(500).send(err);
