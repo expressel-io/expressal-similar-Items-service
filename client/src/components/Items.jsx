@@ -7,32 +7,32 @@ import '../styles/Items.css';
 
 export default class Items extends Component { 
   render() {
-    // console.log(data.newProd.id);
+    // console.log(data.newProd.img);
     return (
       <div className="Items-productCard">
        <div className="Items-layoutColumn">  
           <div className="Items-product-info-container">
-            <div className = "Items-column">
-              <img src={this.props.data.img} />
-            </div>
-            <div className = "Items-price-column">
+            <ul className = "Items-column">
+              <img src={this.props.items.img} />
+            </ul>
+            <ul className = "Items-price-column">
               <p onClick={this.handleClick}>
                 {this.props.items.price}
               </p>
-            </div>
+            </ul>
             <div className = "Items-product-info-container">
-              <div className = "Items-subtitle">
+              <ul className = "Items-subtitle">
                 <p onClick={this.handleClick}>
                   {this.props.items.deliveryCost}
                 </p>
-              </div>
+              </ul>
             </div>
             <div className = "Items-product-Info-container">
-              <div className = "Items-subtitle-days">
+              <ul className = "Items-subtitle-days">
                 <p onClick={this.handleClick}>
                   {this.props.items.dateOfDelivery}
                 </p>
-              </div>
+              </ul>
             </div>
             <br /> 
             <div className = "Items-product-title">

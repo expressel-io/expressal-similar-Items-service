@@ -96,15 +96,15 @@ let Prod = mongoose.model('Prod', prodSchema);
 let saveList = (itemList, cb) => {
    
   for (let i = 0; i < itemList.length; i++) {
-    const newProd = new Prod ({
-    id: itemList[i].id,
-     img: imgPathArr[i],
-    price: itemList[i].price,
-    deliveryCost: itemList[i].deliveryCost,
-    dateOfDelivery: itemList[i].dateOfDelivery,
-    desc: itemList[i].desc,
-    rating: itemList[i].rating,
-    shopsAvalAt: itemList[i].shopsAvalAt
+      const newProd = new Prod ({
+      id: itemList[i].id,
+      img: imgPathArr[i],
+      price: itemList[i].price,
+      deliveryCost: itemList[i].deliveryCost,
+      dateOfDelivery: itemList[i].dateOfDelivery,
+      desc: itemList[i].desc,
+      rating: itemList[i].rating,
+      shopsAvalAt: itemList[i].shopsAvalAt
    
     //'/f/folder/images/.png' //url of image path
     });
