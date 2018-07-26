@@ -1,18 +1,18 @@
-/*product container*/
-
 .App-product-carousel-container {
-	display: block;
-	color: rgba(0,0,0.87);
-	font-family: 'Roboto','Helvetica-neue',sans-serif;
+    display: block;
+    color: rgba(0,0,0.87);
+    font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
 }
 
 .App-product-carousel-column {
-	flex-direction: column;
-	display: flex!important;
+    flex-direction: column;
+    display: flex!important;
 }
 
 .App-title {
+
+    padding: 8px 16px 16px;
     display: block;
     -webkit-margin-before: 0.83em;
     -webkit-margin-after: 0.83em;

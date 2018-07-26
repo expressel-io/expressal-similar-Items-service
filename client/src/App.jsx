@@ -3,6 +3,7 @@ import Sim from './components/Sim.jsx';
 import Items from './components/Items.jsx';
 import axios from 'axios';
 // import Data from '../database/index.js';
+import './styles/Items.css';
 import './styles/app.css';
 
 export default class App extends Component {
@@ -16,14 +17,11 @@ export default class App extends Component {
 
   componentWillMount() {
     let self = this;
-    console.log('i am here');
     axios.get('/api/prods')
       .then(function(response) {
         console.log('response is', response.data);
         self.setState({ itemList: response.data });
-        self.setState({ id: response.data.id });
-
-      })
+        })
       .catch(function(error) {
         console.log(error);
       });
@@ -31,14 +29,17 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App-product-carousel-container">
-        <div className="App-product-carousel-column">
-          <div className="App-title">
-            Similar Items
+      <div className="Items-productCard">
+        <div className="Items-layoutColumn">
+          <div className="App-product-carousel-container">
+            <div className="App-product-carousel-column">
+              <div className="App-title">
+                Similar Items
+                <Sim newItems={this.state.itemList} />
+                <Items items={this.state.itemList} />
 
-            <Sim newItems={this.state.itemList} />
-            <Items items={this.state.itemList} />
-
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -46,13 +47,3 @@ export default class App extends Component {
   }
 
 }
-
-
-//     // {
-          //   test: /\.css$/,
-          //   use: [
-          //     { loader: "style-loader" },
-          //     { loader: "css-loader" },
-          //     { loader: "file-loader" }
-          //   ]
-          // }
