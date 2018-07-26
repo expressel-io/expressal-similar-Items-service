@@ -31,7 +31,7 @@ const generateRatingNum = function () {
 };
 
 const generateShopSelect = function () {
-  const max = shopsAvalAtArr.length
+  const max = shopsAvalAtArr.length;
   const indexNum = Math.floor(Math.random(0) * Math.floor(max));
   return shopsAvalAtArr[indexNum];
 };
@@ -39,7 +39,7 @@ const generateShopSelect = function () {
 const imgPathArr = [];
 const generateImagePath = function () {
   for (let i = 0; i < 90; i++) {
-    const imgVar = '\/' + 'images' + '\/' + 'image-' + i + '.jpg';
+    const imgVar = `/images/image-${i}.jpg`;
     imgPathArr.push(imgVar);
   }
   return imgPathArr;
@@ -59,9 +59,10 @@ const populateData = function () {
       desc: generateDescFunc(),
       rating: generateRatingNum(),
       shopsAvalAt: generateShopSelect(),
-      };
+    };
     itemList.push(item);
   }
+  return itemList;
 };
 populateData();
 
