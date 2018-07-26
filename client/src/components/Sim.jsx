@@ -29,20 +29,18 @@ export default class Sim extends Component {
 
   render() {
     let product = this.props.newItems.map ( (elem, index) => {
-      if ( this.state.lowLimit < index < highLimit) {
+      if ( this.state.lowLimit < index < this.state.highLimit) {
         return <Items key={index} items={elem} />;
       }
     });
       return (
-        <div className="Items-productCard">
-          <div className="Items-layoutColumn">
-            <div className="Items-flex-container">
-              <div onClick={this.handleClick}>
-                {product}   
-              </div>
-            </div>
+      <div className="Items-productCard">
+        <div className="Items-layoutColumn">
+          <div onClick={this.handleClick}>
+            {product}   
           </div>
         </div>
+      </div>
     ) 
   }
 }
