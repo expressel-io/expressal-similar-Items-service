@@ -8,51 +8,27 @@ export default class Items extends Component {
         <p className="Items-column">
           <img src={this.props.items.img} />
         </p>
-        <span className="Items-price-column">
-          <p onClick={this.handleClick}>
-            {this.props.items.price}
-          </p>
+        <span className="Items-price-column">{this.props.items.price}</span>
+        <span className="Items-subtitle">{this.props.items.deliveryCost}</span>
+        <span className="Items-subtitle-days">{this.props.items.dateOfDelivery}</span>
+        <br />
+        <p className="Items-product-title">{this.props.items.desc}</p>
+        <p className="Items-review-Count" onClick={this.handleClick}>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star checked"></span>
+        <span className="fa fa-star"></span>
+        <span className="fa fa-star"></span>
+          {this.props.items.rating}
+        </p>
+        <br /> 
+        <span className="merchantName" onClick={this.handleClick}>
+        {this.props.items.shopsAvalAt}
         </span>
-        <div className="Items-product-info-container">
-          <span className="Items-subtitle">
-            <p onClick={this.handleClick}>
-              {this.props.items.deliveryCost}
-            </p>
-          </span>
-        </div>
-          <div className="Items-product-Info-container">
-              <span className="Items-subtitle-days">
-                <p onClick={this.handleClick}>
-                  {this.props.items.dateOfDelivery}
-                </p>
-              </span>
-          </div>
-          <br /> 
-          <div className="Items-product-title">
-            <p onClick={this.handleClick}>
-              {this.props.items.desc}
-            </p>
-          </div>
-          <br /> 
-          <div className="Items-review-Count">
-            <p onClick={this.handleClick}>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star checked"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              {this.props.items.rating}
-            </p>
-          </div>
-          <br /> 
-          <div className="merchantName">
-              <p onClick={this.handleClick}>
-                {this.props.items.shopsAvalAt}
-              </p>
-          </div>
-          <br /> 
-          <button className="ButtonStyling">ADD TO CART</button>
-        </div>
+        <br />
+        <br />
+        <button className="ButtonStyling"> ADD TO CART </button>
+      </div>
     );
   }
 }

@@ -29,7 +29,7 @@
 .Items-price-column {
     font-size: 1.43em;
     font-weight: bold;
-    line-height: 1;
+    /*line-height: 1;*/
     margin-right: 8px;
 }
 
@@ -73,7 +73,7 @@ div {
 .merchantName {
     color: rgba(0,0,0.54);
     font-size: 14px;
-    overflow: hidden;
+    overflow: visible;
     text-overflow: ellipsis;
     white-space: nowrap;
     position: relative;
