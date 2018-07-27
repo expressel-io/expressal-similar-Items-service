@@ -26,7 +26,7 @@ export default class Sim extends Component {
   render() {
     const product = this.props.newItems.map((elem, index) => {
       if (this.state.lowLimit < index < this.state.highLimit) {
-        return <Items key={index} items={elem} />;
+        return <Items key={index} item={elem} />;
       }
     });
     return (
