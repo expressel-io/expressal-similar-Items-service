@@ -46,27 +46,80 @@ const generateImagePath = () => {
 };
 generateImagePath();
 
-const itemList = [
-  id: 1,
-  itemId:1,
-  imgPath: imgPathArr[91],
-  price: '$2,349.0',
-  deliveryCost: 'FREE delivery',
-  dateOfDelivery: 19 days,
-  desc: "Apple MacBook Pro 15.4 - Core 6GB RAM-256 GB SSD- Silver"
-  rating: 2129,
-  shopsAvalAt: AdoramaCamera,
-
-
-
-
-
+let itemList = [
+  {
+    id: 0,
+    itemId: 1,
+    imgPath: imgPathArr[0],
+    price: '$2,349.00',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro 15.4 - Core 6GB RAM-256 GB SSD- Silver',
+    rating: 2129,
+    shopsAvalAt: 'AdoramaCamera',
+  },
+  {
+    id: 1,
+    itemId: 1,
+    imgPath: imgPathArr[1],
+    price: '$2,399.0 ',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro B- Silver- AMD Radeon Pro 555X',
+    rating: 1,
+    shopsAvalAt: 'AdoramaCamera',
+  },
+  {
+    id: 2,
+    itemId: 1,
+    imgPath: imgPathArr[2],
+    price: '$2,799.0 ',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro with AMD Radeon Pro 555X',
+    rating: 1,
+    shopsAvalAt: 'AdoramaCamera',
+  },
+  {
+    id: 3,
+    itemId: 1,
+    imgPath: imgPathArr[3],
+    price: '$2,799.0 ',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro 13.3"-Core RAM 256 GB SSD- Space Gray',
+    rating: 8630,
+    shopsAvalAt: 'AdoramaCamera',
+  },
+  {
+    id: 4,
+    itemId: 1,
+    imgPath: imgPathArr[4],
+    price: '$1,799.0 ',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro with Touch B-8GB RAM 256 GB SSD-Silver',
+    rating: 8630,
+    shopsAvalAt: 'AdoramaCamera',
+  },
+  {
+    id: 5,
+    itemId: 1,
+    imgPath: imgPathArr[5],
+    price: '$1,799.0 ',
+    deliveryCost: 'FREE delivery',
+    dateOfDelivery: '19 days',
+    desc: 'Apple MacBook Pro with Touch B-8GB RAM 256 GB SSD-Silver',
+    rating: 8630,
+    shopsAvalAt: 'AdoramaCamera',
+  },
 ];
 
 const populateData = () => {
-  for (let i = 7; i < 100; i++) {
+  for (let i = 6; i < 100; i++) {
     const item = {
       id: i,
+      itemId:i,
       imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),
@@ -75,7 +128,7 @@ const populateData = () => {
       rating: generateRatingNum(),
       shopsAvalAt: generateShopSelect(),
     };
-    itemList.concat(itemList(item));
+    itemList.push(item);
   }
   return itemList;
 };
@@ -83,6 +136,7 @@ populateData();
 
 const prodSchema = mongoose.Schema({
   prodId: Number,
+  itemId: Number,
   price: String,
   deliveryCost: String,
   dateOfDelivery: String,
@@ -104,6 +158,7 @@ const saveList = (itemData, cb) => {
   for (let i = 0; i < itemList.length; i++) {
     const newProd = new Prod({
       prodId: itemData[i].prodId,
+      itemId: itemData[i].itemId,
       img: imgPathArr[i],
       price: itemData[i].price,
       deliveryCost: itemData[i].deliveryCost,
@@ -116,15 +171,12 @@ const saveList = (itemData, cb) => {
   }
 };
 
-//////////////prods
-
-
 
 saveList(itemList, (err, product) => {
   if (err) {
     console.error(err);
   } else {
-    // console.log('prod', product);
+     console.log('prod', product);
   }
 });
 
