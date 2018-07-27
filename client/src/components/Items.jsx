@@ -8,24 +8,24 @@ export default class Items extends Component {
         <p className="Items-column">
           <img src={this.props.items.img} />
         </p>
-        <p className="Items-price-column">
+        <span className="Items-price-column">
           <p onClick={this.handleClick}>
             {this.props.items.price}
           </p>
-        </p>
+        </span>
         <div className="Items-product-info-container">
-          <p className="Items-subtitle">
+          <span className="Items-subtitle">
             <p onClick={this.handleClick}>
               {this.props.items.deliveryCost}
             </p>
-          </p>
+          </span>
         </div>
           <div className="Items-product-Info-container">
-              <p className="Items-subtitle-days">
+              <span className="Items-subtitle-days">
                 <p onClick={this.handleClick}>
                   {this.props.items.dateOfDelivery}
                 </p>
-              </p>
+              </span>
           </div>
           <br /> 
           <div className="Items-product-title">
