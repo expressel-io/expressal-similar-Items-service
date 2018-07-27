@@ -113,8 +113,14 @@ const find = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);
 };
 
+const findById = (id, callback) => {
+  Prod.find({ _id: { $in: itemList } }).sort('-size').limit(5).exec(callback);
+};
+
+
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;
 module.exports.find = find;
+module.exports.findById = findById;
 
 
