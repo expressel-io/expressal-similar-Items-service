@@ -11,12 +11,12 @@ div {
     color: rgba(0,0,0.87);
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
-}
+}*/
 
-.App-product-carousel-column {
+/*.App-product-carousel-column {
     flex-direction: row;
     display: flex;
-}
+}*/
 
 .App-title {
 
@@ -41,4 +41,4 @@ body {
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
     
-}*/
+}

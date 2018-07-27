@@ -96,16 +96,24 @@ div {
     vertical-align: baseline;
     text-align: center;
     margin: 0;
-    min-width: 88px;
+    min-width: 30px;
     line-height: 36px;
     border-radius: 2px;
     overflow: visible;
-    max-width: 100%;
+    max-width: 75%;
     background: transparent;
     font-family: Roboto,"Helvetica Neue",sans-serif;
     font-size: 14px;
     font-weight: 500;
-    flex: 1 1 100%;
+    flex: 1 1 10%;
+    float:left;
+   margin-right:5px;
+   font: 400 13.3333px Arial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
 }
 
 body {
@@ -124,20 +132,39 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
-button {
-    text-rendering: auto;
-    align-items: flex-start;
-    -webkit-appearance: button;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    cursor: pointer;
-    font: 400 13.3333px Arial;
-
-}
 
 button:hover { 
     background-color: #d9e5f7;
 }
+
+
+
+/*
+.ButtonStyling {
+    color: #4285f4;
+    outline: 1px solid #e0e0e0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+    min-width: 50px;
+    line-height: 36px;
+    border-radius: 2px;
+    overflow: visible;
+    max-width: 100%;
+    background: transparent;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1 1 100%;
+}
+
+*/
