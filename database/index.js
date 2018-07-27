@@ -6,38 +6,38 @@ mongoose.connect('mongodb://localhost/fetcher');
 
 const shopsAvalAtArr = ['COSTCO', 'Wallmart', 'Target', 'FRYs Electronics', 'AdoramaCamera'];
 
-const generatePriceFunc = function () {
+const generatePriceFunc = () => {
   const a = Math.floor(Math.random() * Math.floor(5000));
   return faker.commerce.price(0.10, a, 2, '$');
 };
 
-const generateDeliveryCostFunc = function () {
+const generateDeliveryCostFunc = () => {
   return 'Free delivery';
 };
 
-const generateRandomDate = function (start, end) {
+const generateRandomDate = (start, end) => {
   for (let i = 0; i < 100; i++) {
     const dateNew = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     return dateNew;
   }
 };
 
-const generateDescFunc = function () {
+const generateDescFunc = () => {
   return (faker.commerce.productName());
 };
 
-const generateRatingNum = function () {
+const generateRatingNum = () => {
   return Math.floor(Math.random() * Math.floor(1000));
 };
 
-const generateShopSelect = function () {
+const generateShopSelect = () => {
   const max = shopsAvalAtArr.length;
   const indexNum = Math.floor(Math.random(0) * Math.floor(max));
   return shopsAvalAtArr[indexNum];
 };
 
 const imgPathArr = [];
-const generateImagePath = function () {
+const generateImagePath = () => {
   for (let i = 0; i < 90; i++) {
     const imgVar = `/images/image-${i}.jpg`;
     imgPathArr.push(imgVar);
@@ -46,10 +46,25 @@ const generateImagePath = function () {
 };
 generateImagePath();
 
-const itemList = [];
+const itemList = [
+  id: 1,
+  itemId:1,
+  imgPath: imgPathArr[91],
+  price: '$2,349.0',
+  deliveryCost: 'FREE delivery',
+  dateOfDelivery: 19 days,
+  desc: "Apple MacBook Pro 15.4 - Core 6GB RAM-256 GB SSD- Silver"
+  rating: 2129,
+  shopsAvalAt: AdoramaCamera,
 
-const populateData = function () {
-  for (let i = 1; i < 100; i++) {
+
+
+
+
+];
+
+const populateData = () => {
+  for (let i = 7; i < 100; i++) {
     const item = {
       id: i,
       imgPath: imgPathArr[i],
@@ -60,14 +75,14 @@ const populateData = function () {
       rating: generateRatingNum(),
       shopsAvalAt: generateShopSelect(),
     };
-    itemList.push(item);
+    itemList.concat(itemList(item));
   }
   return itemList;
 };
 populateData();
 
 const prodSchema = mongoose.Schema({
-  id: Number,
+  prodId: Number,
   price: String,
   deliveryCost: String,
   dateOfDelivery: String,
@@ -88,7 +103,7 @@ const Prod = mongoose.model('Prod', prodSchema);
 const saveList = (itemData, cb) => {
   for (let i = 0; i < itemList.length; i++) {
     const newProd = new Prod({
-      id: itemData[i].id,
+      prodId: itemData[i].prodId,
       img: imgPathArr[i],
       price: itemData[i].price,
       deliveryCost: itemData[i].deliveryCost,
@@ -101,22 +116,36 @@ const saveList = (itemData, cb) => {
   }
 };
 
+//////////////prods
+
+
+
 saveList(itemList, (err, product) => {
   if (err) {
     console.error(err);
   } else {
-    console.log('prod', product);
+    // console.log('prod', product);
   }
 });
 
-const find = (callback) => {
+const find = (paramId, callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);
 };
 
-const findById = (id, callback) => {
-  Prod.find({ _id: { $in: itemList } }).sort('-size').limit(5).exec(callback);
-};
+const findById = (paramId, callback) => {
+    
+  // db.prods.findOne( { id: paramId }  ).then(function(myDoc) {
+  //     console.log('mydoc',myDoc);
+  //     if (myDoc) {
+  //   var prodAt = myDoc.filter(function(obj) {
+  //       return obj.id === id;
+  //   });
+  // }
 
+// });
+
+  Prod.find({ id: paramId }).exec(callback);
+};
 
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;

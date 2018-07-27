@@ -18,20 +18,22 @@ app.use('/static', express.static(path.join(__dirname, 'public')));
 app.get('/api/prods', (req, res) => { 
   DB.find ( (err, prods) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(502).send(err);
     } else {
       res.json(prods);
     }
   });
 });
 
-app.get('/api/products/:prodId', (req, res) => {
-  const prodId = req.params.Id;
-  DB.findById(prodId, (err) => {
+app.get('/api/prods/:prodId', (req, res) => {
+  const productId = req.params.prodId;
+  console.log('req', req.params);
+  DB.findById(productId, (err) => {
     if (err) {
-      res.status(500).send(err);
+      res.status(502).send(err);
     } else {
-      res.json(prodId);
+    	console.log('server', productId)
+      res.json(productId);
     }
   });
 });
