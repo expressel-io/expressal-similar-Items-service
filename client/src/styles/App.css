@@ -6,17 +6,6 @@
 div {
     display: flex;
 }
-/*.App-product-carousel-container {
-    display: block;
-    color: rgba(0,0,0.87);
-    font-family: 'Roboto','Helvetica-neue',sans-serif;
-    font-size: 14px;
-}*/
-
-/*.App-product-carousel-column {
-    flex-direction: row;
-    display: flex;
-}*/
 
 .App-title {
 
@@ -42,3 +31,36 @@ body {
     font-size: 14px;
     
 }
+
+.next {
+    margin-top:167px;
+    font-size: 40px;
+    height: 64px;
+    width: 32px;
+    color:rgba(0,0,0.54);
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    font-family: 'Material Icons';
+    direction: ltr;
+    cursor: pointer;
+}
+
+a:hover{
+  
+    color: #4285f4;
+ 
+    
+}
+
+/*.App-product-carousel-container {
+    display: block;
+    color: rgba(0,0,0.87);
+    font-family: 'Roboto','Helvetica-neue',sans-serif;
+    font-size: 14px;
+}
+
+.App-product-carousel-column {
+    flex-direction: row;
+    display: flex;
+}*/

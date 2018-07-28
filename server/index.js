@@ -14,8 +14,13 @@ app.use(express.static(__dirname + '/../client/dist'));
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  console.log(`serving ${req.method} request at ${req.url}`);
+  next();
+});
 
-app.get('/api/prods', (req, res) => { 
+
+app.get('/api/products', (req, res) => { 
   DB.find ( (err, prods) => {
     if (err) {
       res.status(502).send(err);
@@ -25,15 +30,15 @@ app.get('/api/prods', (req, res) => {
   });
 });
 
-app.get('/api/prods/:prodId', (req, res) => {
-  const productId = req.params.prodId;
-  console.log('req', req.params);
-  DB.findById(productId, (err) => {
+app.get('/api/products/:prodId', (req, res) => {
+  const productId = parseInt(req.params.prodId);
+  console.log('req', productId);
+  DB.findById(productId, (err, results) => {
     if (err) {
       res.status(502).send(err);
     } else {
-    	console.log('server', productId)
-      res.json(productId);
+    	console.log('server', results)
+      res.json(results);
     }
   });
 });

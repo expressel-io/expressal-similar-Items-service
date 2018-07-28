@@ -180,28 +180,37 @@ saveList(itemList, (err, product) => {
   }
 });
 
-const find = (paramId, callback) => {
+const find = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);
 };
 
 const findById = (paramId, callback) => {
     
-  // db.prods.findOne( { id: paramId }  ).then(function(myDoc) {
-  //     console.log('mydoc',myDoc);
-  //     if (myDoc) {
-  //   var prodAt = myDoc.filter(function(obj) {
-  //       return obj.id === id;
-  //   });
-  // }
-
+//   Prod.findOne({ id: paramId }).then(function(myDoc) {
+//     console.log('mydoc',myDoc);
+//     if (myDoc) {
+//     let prodAt = myDoc.filter((obj) => {
+//         return obj.id === id;
+//     });
+//   }
+Prod.find( { "itemId" : paramId } ).limit(5).exec(callback);
 // });
 
-  Prod.find({ id: paramId }).exec(callback);
+  //Prod.find({ id: paramId }).exec(callback);
+
+ // Prod.findOne({id: paramId}).select({ prods: {$elemMatch: {id: paramId}}})
+ //db.users.find().limit(pageSize);
+// //Find the id of the last document in this page
+// last_id = ...
+ 
+
+// users = db.users.find({'_id'> last_id}). limit(5);
+// //Update the last id with the id of the last document in this page
+// last_id = ...
 };
 
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;
 module.exports.find = find;
 module.exports.findById = findById;
-
 

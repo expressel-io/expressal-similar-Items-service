@@ -24,10 +24,9 @@ const Items = (props) => (
       {props.item.shopsAvalAt}
     </span>
     <br />
-    <br />
     <button className="ButtonStyling"> ADD TO CART </button>
+    <br />
   </div>
 );
 
 export default Items;
- 

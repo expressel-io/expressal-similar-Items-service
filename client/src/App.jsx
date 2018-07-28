@@ -9,33 +9,36 @@ export default class App extends Component {
     super(props);
     this.state = {
       itemList: [],
+      itemId: 1,
     };
   }
 
 
   componentDidMount() {
-    axios.get('/api/prods')
+    // axios.get('/api/products')
+    //   .then((response) => {
+    //     this.setState({ itemList: response.data });
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+    const { itemId } = this.state;
+     axios.get(`/api/products/${itemId}`)
       .then((response) => {
         this.setState({ itemList: response.data });
       })
       .catch((error) => {
         console.error(error);
       });
-    
   }
-
 
   render() {
     return (
       <div className="Items-productCard">
         <div className="Items-layoutColumn">
-          <div className="App-product-carousel-container">
-            <div className="App-product-carousel-column">
-              <div className="App-title">
-                Similar Items
+          <div className="App-title">
+              Similar Items
                 <Sim newItems={this.state.itemList} />
-              </div>
-            </div>
           </div>
         </div>
       </div>

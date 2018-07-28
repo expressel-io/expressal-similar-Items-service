@@ -54,11 +54,17 @@ div {
 
 .Items-product-title {
     color: rgba(0,0,0,0.54);
+    -webkit-tap-highlight-color: transparent;
     line-height: 1.43em;
     overflow-wrap: break-word;
     word-break: break-word;
     word-wrap: break-word;
     cursor: pointer;
+    font-family: 'Roboto','Helvetica-neue',sans-serif;
+    font-size: 14px;
+    flex: 1 0 auto;
+    position: relative;
+    padding: 0 16px;
 }
 
 .Items-review-Count {
@@ -85,7 +91,7 @@ div {
     color: #4285f4;
     outline: 1px solid #e0e0e0;
     border: 0;
-    padding: 0;
+    padding: 60;
     box-sizing: border-box;
     position: relative;
     user-select: none;
@@ -96,7 +102,7 @@ div {
     vertical-align: baseline;
     text-align: center;
     margin: 0;
-    min-width: 30px;
+    min-width: 80px;
     line-height: 36px;
     border-radius: 2px;
     overflow: visible;
@@ -107,8 +113,7 @@ div {
     font-weight: 500;
     flex: 1 1 10%;
     float:left;
-   margin-right:5px;
-   font: 400 13.3333px Arial;
+    margin-right:5px;
     letter-spacing: normal;
     word-spacing: normal;
     text-transform: none;
@@ -164,7 +169,14 @@ button:hover {
     font-family: Roboto,"Helvetica Neue",sans-serif;
     font-size: 14px;
     font-weight: 500;
-    flex: 1 1 100%;
-}
+     flex: 1 1 10%;
+    float:left;
+    margin-right:5px;
+    font: 400 13.3333px Arial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+}*/
 
-*/
