@@ -50,7 +50,7 @@ let itemList = [
   {
     id: 0,
     itemId: 1,
-    imgPath: imgPathArr[0],
+    imgPath: 'imgPathArr[0]',
     price: '$2,349.00',
     deliveryCost: 'FREE delivery',
     dateOfDelivery: '19 days',
@@ -119,7 +119,7 @@ const populateData = () => {
   for (let i = 6; i < 100; i++) {
     const item = {
       id: i,
-      itemId:i,
+      itemId: i,
       imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),
@@ -176,7 +176,7 @@ saveList(itemList, (err, product) => {
   if (err) {
     console.error(err);
   } else {
-     console.log('prod', product);
+    console.log('prod', product);
   }
 });
 
@@ -184,33 +184,11 @@ const find = (callback) => {
   Prod.find({}).sort('-size').limit(5).exec(callback);
 };
 
-const findById = (paramId, callback) => {
-    
-//   Prod.findOne({ id: paramId }).then(function(myDoc) {
-//     console.log('mydoc',myDoc);
-//     if (myDoc) {
-//     let prodAt = myDoc.filter((obj) => {
-//         return obj.id === id;
-//     });
-//   }
-Prod.find( { "itemId" : paramId } ).limit(5).exec(callback);
-// });
-
-  //Prod.find({ id: paramId }).exec(callback);
-
- // Prod.findOne({id: paramId}).select({ prods: {$elemMatch: {id: paramId}}})
- //db.users.find().limit(pageSize);
-// //Find the id of the last document in this page
-// last_id = ...
- 
-
-// users = db.users.find({'_id'> last_id}). limit(5);
-// //Update the last id with the id of the last document in this page
-// last_id = ...
+const findById = (paramId, callback) => {   
+  Prod.find( { "itemId" : paramId } ).limit(5).exec(callback);
 };
 
 module.exports.saveList = saveList;
 module.exports.itemList = itemList;
 module.exports.find = find;
 module.exports.findById = findById;
-

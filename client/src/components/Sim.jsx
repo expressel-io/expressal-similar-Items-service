@@ -4,7 +4,7 @@ import Items from './Items.jsx';
 import '../styles/App.css';
 import '../styles/Items.css';
 
-export default class Sim extends Component { 
+export default class Sim extends Component {
   constructor(props, context) {
     super(props, context);
     // this.state = {
@@ -19,14 +19,13 @@ export default class Sim extends Component {
   }
 
   handleClick() {
-    
+    //handle click to open page corresponding to item id
+    //not sure whether this functionality is required now.
   }
 
   render() {
     const product = this.props.newItems.map((elem, index) => {
-      // if (this.state.lowLimit < index < this.state.highLimit) {
-        return <Items key={index} item={elem} />;
-      // }
+      return <Items key={index} item={elem} />;
     });
     return (
       <div className="Items-productCard">

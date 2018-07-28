@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/Items.css';
 
-const Items = (props) => ( 
+const Items = (props) => (
   <div className="Items-product-info-container">
     <p className="Items-column">
       <img src={props.item.img} />
@@ -12,11 +12,11 @@ const Items = (props) => (
     <br />
     <p className="Items-product-title">{props.item.desc}</p>
     <p className="Items-review-Count">
-    <span className="fa fa-star checked"></span>
-    <span className="fa fa-star checked"></span>
-    <span className="fa fa-star checked"></span>
-    <span className="fa fa-star"></span>
-    <span className="fa fa-star"></span>
+      <span className="fa fa-star checked"></span>
+      <span className="fa fa-star checked"></span>
+      <span className="fa fa-star checked"></span>
+      <span className="fa fa-star"></span>
+      <span className="fa fa-star"></span>
       {props.item.rating}
     </p>
     <br /> 
@@ -25,6 +25,7 @@ const Items = (props) => (
     </span>
     <br />
     <button className="ButtonStyling"> ADD TO CART </button>
+    
     <br />
   </div>
 );

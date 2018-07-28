@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 
 
 app.get('/api/products', (req, res) => { 
-  DB.find ( (err, prods) => {
+  DB.find((err, prods) => {
     if (err) {
       res.status(502).send(err);
     } else {
@@ -32,12 +32,10 @@ app.get('/api/products', (req, res) => {
 
 app.get('/api/products/:prodId', (req, res) => {
   const productId = parseInt(req.params.prodId);
-  console.log('req', productId);
   DB.findById(productId, (err, results) => {
     if (err) {
       res.status(502).send(err);
     } else {
-    	console.log('server', results)
       res.json(results);
     }
   });

@@ -23,7 +23,7 @@ export default class App extends Component {
     //     console.error(error);
     //   });
     const { itemId } = this.state;
-     axios.get(`/api/products/${itemId}`)
+    axios.get(`/api/products/${itemId}`)
       .then((response) => {
         this.setState({ itemList: response.data });
       })
@@ -38,7 +38,7 @@ export default class App extends Component {
         <div className="Items-layoutColumn">
           <div className="App-title">
               Similar Items
-                <Sim newItems={this.state.itemList} />
+              <Sim newItems={this.state.itemList} />
           </div>
         </div>
       </div>

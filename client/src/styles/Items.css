@@ -37,6 +37,9 @@
     color: rgba(0,0,0.54);
     font-size: 12px;
     line-height: 16px;
+    font-weight: bold;
+    color: #0D904F;
+  
 }
 
 .checked {
@@ -50,6 +53,10 @@ div {
 
 .Items-subtitle-days {
     background-color: #fafafa;
+    overflow-wrap: break-word;
+    color: rgba(0,0,0,0.54);
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .Items-product-title {
@@ -64,7 +71,7 @@ div {
     font-size: 14px;
     flex: 1 0 auto;
     position: relative;
-    padding: 0 16px;
+    padding: 0 14px;
 }
 
 .Items-review-Count {
@@ -142,8 +149,41 @@ button:hover {
     background-color: #d9e5f7;
 }
 
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+ 
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+}
 
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+ 
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+ 
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+ 
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}
 
+.stars-inner {
+  width: 0;
+}
 /*
 .ButtonStyling {
     color: #4285f4;
