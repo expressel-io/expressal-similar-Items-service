@@ -23,8 +23,8 @@ const prodSchema = mongoose.Schema({
 });
 
 const Prod = mongoose.model('Prod', prodSchema);
-const imgPathArr = seed.generateImagePath();
-const data = seed.populateData();
+const imgPathArr = seed.generateImagePath;
+const data = seed.populateData;
 
 
 const saveList = (itemData, cb) => {

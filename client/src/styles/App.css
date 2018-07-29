@@ -18,6 +18,7 @@ div {
     font-family: "Google Sans",sans-serif;
     font-size: 22px;
     font-weight: 400;
+    flex: auto auto auto auto auto;
 }
 
 
@@ -29,6 +30,7 @@ body {
   
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
+    flex: auto auto auto auto auto;
     
 }
 

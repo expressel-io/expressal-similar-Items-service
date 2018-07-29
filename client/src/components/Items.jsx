@@ -3,7 +3,7 @@ import '../styles/Items.css';
 
 const Items = (props) => (
   <div className="Items-product-info-container">
-    <p className="Items-price-column">
+    <p className="Items-column">
       <img src={props.item.img} />
     </p>
     <span className="Items-price-column">{props.item.price}</span>

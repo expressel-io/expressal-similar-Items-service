@@ -1,25 +1,26 @@
-import React from 'react';
-import '../styles/Items.css';
-const $ = require('jquery');
+import React, { Component } from 'react';
+import $ from 'jquery';
 
-
-const ratings = {
-  prod_a : 2.8,
-  prod_b : 3.3,
-  prod_c : 1.9,
-  prod_d : 4.3,
-  prod_e : 4.74
+const generate1 = () => {
+  const $msg = $('<span></span>');
+  $msg.addClass('fa fa-star checked');
+  return $msg;
 };
 
-const starTotal = 5;
-for (const rating in ratings) {  
-  // 2
-  const starPercentage = (ratings[rating] / starTotal) * 100;
-  // 3
-  const starPercentageRounded = `${(Math.round(starPercentage / 10) * 10)}%`;
-  // 4
-  document.querySelector(`.${rating} .stars-inner`).style.width = starPercentageRounded; 
+const generate2 = () => {
+  const $msg = $('<span></span>');
+  $msg.addClass('fa fa-star');
+  return $msg;
+};
+
+const num = Math.floor(Math.random() * Math.floor(5));
+for (const i = 0; i < num; i++) {
+  generate1();
 }
-export default Items;
+
+for (const i = 0; i < 5 - num; i++) {
+  generate2();
+}
+
 
 //<i className= "fa fa-star" aria-hidden="true"></i>

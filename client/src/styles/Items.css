@@ -1,6 +1,5 @@
 .Items-productCard {
     cursor: pointer;
-    position: relative;
     -webkit-tap-highlight-color: transparent;
     padding: 0 16px;
     color: inherit;
@@ -13,13 +12,13 @@
     flex-direction: row;*/
     font-size: 1.43em;
     font-weight: bold;
+    flex: auto auto auto auto auto;
     /*line-height: 1;*/
-    margin-right: 8px;
+   
 }
 
 .Items-product-info-container {
     cursor: pointer;
-    position: relative;
     -webkit-tap-highlight-color: transparent;
     font-weight: bold;
     font-size: 12px;
@@ -27,6 +26,7 @@
     margin-top: 4px;
     display: flex;
     flex-direction: column;
+    flex: auto auto auto auto auto;
 }
 
 .Items-price-column {
@@ -34,6 +34,7 @@
     font-weight: bold;
     /*line-height: 1;*/
     margin-right: 8px;
+    flex: auto auto auto auto auto;
 }
 
 .Items-subtitle {
@@ -72,7 +73,6 @@ div {
     cursor: pointer;
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
-    flex: initial none none none;
     position: relative;
     padding: 0 14px;
 }
