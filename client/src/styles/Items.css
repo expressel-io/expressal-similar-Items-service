@@ -8,10 +8,13 @@
     
 }
 .Items-layoutColumn {
-
- /*   display: flex;
-    flex-direction: row;
-    flex: 1 0 auto;*/
+/*
+    display: flex;
+    flex-direction: row;*/
+    font-size: 1.43em;
+    font-weight: bold;
+    /*line-height: 1;*/
+    margin-right: 8px;
 }
 
 .Items-product-info-container {
@@ -69,7 +72,7 @@ div {
     cursor: pointer;
     font-family: 'Roboto','Helvetica-neue',sans-serif;
     font-size: 14px;
-    flex: 1 0 auto;
+    flex: initial none none none;
     position: relative;
     padding: 0 14px;
 }

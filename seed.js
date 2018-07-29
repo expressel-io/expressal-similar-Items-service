@@ -40,13 +40,13 @@ const generateImagePath = () => {
   }
   return imgPathArr;
 };
-generateImagePath();
+// generateImagePath();
 
 let itemList = [
   {
     id: 0,
     itemId: 1,
-    imgPath: 'imgPathArr[0]',
+    imgPath: 'https://lh3.googleusercontent.com/proxy/xkwF1N8HSj8A5Cn2NNxcSJnQ2rnMB9gFds5Cirf1aEbySWjKSaUCQiRsMbJ4mBjVmZBc1UHnyJjqpopwYkZOkG_zRscc38OrUgVs52-ZTn2LLm5uKF29WMPqJ6SKEgJrf7POIw_rQx8e4KDuh-AAtrsUCSB5DLmaSHrjT1AHD3jsz_65V4g=s180-pd-e365-rw-pc0xffffff',
     price: '$2,349.00',
     deliveryCost: 'FREE delivery',
     dateOfDelivery: '19 days',
@@ -128,7 +128,7 @@ const populateData = () => {
   }
   return itemList;
 };
-populateData();
+// populateData();
 
 module.exports.itemList = itemList;
 module.exports.populateData = populateData;
