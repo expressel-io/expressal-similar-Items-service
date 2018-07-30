@@ -54,7 +54,8 @@ saveList(data, (err, product) => {
 });
 
 const find = (callback) => {
-  Prod.find({}).sort('-size').limit(5).exec(callback);
+  // Prod.find({}).sort('-size').limit(5).exec(callback);
+  Prod.find({ "itemId": { $gt: 6 } }).limit(5).exec(callback);
 };
 
 const findById = (paramId, callback) => {   

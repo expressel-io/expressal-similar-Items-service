@@ -32,7 +32,6 @@ export default class Similar extends Component {
         <div className="Items-layoutColumn">
           <div onClick={this.handleClick}>
             {product}
-            <a href="#" className="next">&raquo;</a> 
           </div>
         </div>
       </div>

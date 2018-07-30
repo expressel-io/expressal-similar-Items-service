@@ -112,7 +112,7 @@ let itemList = [
 ];
 
 const populateData = () => {
-  for (let i = 6; i < 100; i++) {
+  for (let i = 6; i < 200; i++) {
     const item = {
       id: i,
       itemId: Math.ceil(i/5),

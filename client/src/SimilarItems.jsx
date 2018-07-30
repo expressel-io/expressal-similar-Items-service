@@ -15,16 +15,21 @@ export default class SimilarItems extends Component {
 
 
   componentDidMount() {
-    // axios.get('/api/products')
-    //   .then((response) => {
-    //     this.setState({ itemList: response.data });
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
     const { itemId } = this.state;
     axios.get(`/api/products/${itemId}`)
       .then((response) => {
+        this.setState({ itemList: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
+      });   
+  }
+
+  handleClick() {
+    console.log('clicked')
+    axios.get('/api/products/')
+      .then((response) => {
+        console.log('resp', response.data);
         this.setState({ itemList: response.data });
       })
       .catch((error) => {
@@ -39,8 +44,11 @@ export default class SimilarItems extends Component {
           <div className="App-title">
               Similar Items
               <Similar newItems={this.state.itemList} />
+              
           </div>
-        </div>
+
+        </div> 
+          <a href="#" className="next"  onClick={this.handleClick.bind(this)}>&raquo;</a>
       </div>
     );
   }

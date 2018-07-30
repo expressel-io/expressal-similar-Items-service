@@ -20,12 +20,12 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/api/products', (req, res) => { 
+app.get('/api/products/', (req, res) => { 
   DB.find((err, prods) => {
     if (err) {
       res.status(502).send(err);
     } else {
-      res.json(prods);
+      res.send(prods);
     }
   });
 });
@@ -36,7 +36,7 @@ app.get('/api/products/:prodId', (req, res) => {
     if (err) {
       res.status(502).send(err);
     } else {
-      res.json(results);
+      res.send(results);
     }
   });
 });
