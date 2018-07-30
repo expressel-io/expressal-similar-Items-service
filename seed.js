@@ -40,7 +40,7 @@ const generateImagePath = () => {
   }
   return imgPathArr;
 };
-generateImagePath();
+// generateImagePath();
 
 let itemList = [
   {
@@ -115,7 +115,7 @@ const populateData = () => {
   for (let i = 6; i < 100; i++) {
     const item = {
       id: i,
-      itemId: i,
+      itemId: Math.ceil(i/5),
       imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),
@@ -128,7 +128,7 @@ const populateData = () => {
   }
   return itemList;
 };
-populateData();
+// populateData();
 
 module.exports.itemList = itemList;
 module.exports.populateData = populateData;
