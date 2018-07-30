@@ -27,9 +27,13 @@ export default class SimilarItems extends Component {
 
   handleClick() {
     console.log('clicked')
-    axios.get('/api/products/')
+    const { itemId } = this.state;
+    axios.get(`/api/products/next/${itemId}`)
+    // axios.get('/api/products/')
       .then((response) => {
         console.log('resp', response.data);
+        this.setState({ itemId: response.data[0].itemId})
+        console.log('resp', response.data[0].itemId);
         this.setState({ itemList: response.data });
       })
       .catch((error) => {

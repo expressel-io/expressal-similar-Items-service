@@ -7,7 +7,7 @@ const app = express();
 
 const port = 3004;
 
-app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -20,12 +20,18 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/api/products/', (req, res) => { 
-  DB.find((err, prods) => {
+app.get('/api/products/next/:prodId', (req, res) => { 
+    // DB.find((err, prods) => {
+    // if (err) {
+    //   res.status(502).send(err);
+    // } else {
+    //   res.send(prods);
+  const productId = parseInt(req.params.prodId);
+  DB.find(productId, (err, results) => {
     if (err) {
       res.status(502).send(err);
     } else {
-      res.send(prods);
+      res.send(results);
     }
   });
 });
