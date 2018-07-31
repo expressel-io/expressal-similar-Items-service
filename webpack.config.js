@@ -1,3 +1,7 @@
+ var path = require('path');
+ var nodeModules = path.join(__dirname, 'node_modules');// Absolute path to the project root
+// var resolveRoot = path.join(projectRoot, 'node_modules');
+
  module.exports = {
       entry: __dirname + '/client/src/index.jsx',
       module: {
@@ -5,10 +9,11 @@
           { 
             test: [/\.jsx$/],
             exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-              presets: ['env', 'react'],
-            }
+            use: [ 'babel-loader' ],
+
+            // query: {
+            //   presets: ['env', 'react'],
+            // }
           },
           {
             test: /\.css$/,
@@ -21,8 +26,12 @@
         path: __dirname + '/client/dist',
         
       },
+      // resolveLoader: {
+      //   root: nodeModules,
+        
+      // },
       resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.jsx', '.js']
       },
       devtool: 'source-map'
     };

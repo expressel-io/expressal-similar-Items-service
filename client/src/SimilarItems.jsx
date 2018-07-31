@@ -9,6 +9,7 @@ export default class SimilarItems extends Component {
     super(props);
     this.state = {
       itemList: [],
+      newItemList: [],
       itemId: 1,
       counter: 0,
     };
@@ -23,6 +24,7 @@ export default class SimilarItems extends Component {
       .catch((error) => {
         console.error(error);
       });   
+    this.handleClickAgain();
   }
 
   handleClick() {
@@ -34,6 +36,8 @@ export default class SimilarItems extends Component {
         const newCounter = this.state.counter;
         this.setState({ counter: newCounter+1 });
         console.log('count', newCounter+1);
+        const newData = response.data;
+        const newList = this.state.newItemList;
         this.setState({ itemList: response.data });
       })
       .catch((error) => {
@@ -42,14 +46,20 @@ export default class SimilarItems extends Component {
   }
 
   handleClickAgain() {
-    console.log('clicked');
-    const { itemId } = this.state;
-    axios.get(`/api/products/previous/${itemId}`)
+     const { itemId } = this.state;
+    axios.get(`/api/products/${itemId}`)
       .then((response) => {
-        this.setState({ itemId: response.data[0].itemId});
-        const newCounter = this.state.counter;
-        this.setState({ counter: newCounter-1 });
-        console.log('count', newCounter-1);
+        this.setState({ itemList: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+   handleFirstClick() {
+    // const { itemId } = this.state;
+    axios.get(`/api/products/1`)
+      .then((response) => {
         this.setState({ itemList: response.data });
       })
       .catch((error) => {
@@ -70,19 +80,38 @@ export default class SimilarItems extends Component {
           <a href="#" className="next" onClick={this.handleClick.bind(this)}>&raquo;</a>
         </div>
       );
-    } else {
+    } else if (this.state.counter ===1 ) {
       return (
         <div className="Items-productCard">
-          <a href="#" class="previous" onClick={this.handleClickAgain.bind(this)}>&laquo;</a>
+          <a href="#" className="previous" onClick={this.handleFirstClick.bind(this)}>&laquo;</a>
+          <div className="Items-layoutColumn">
+            <div className="App-title">
+                Similar Items
+                <Similar newItems={this.state.itemList} />  
+
+            </div>
+          </div>         
+        
+        </div>
+      ); 
+    } 
+  }
+}
+
+/*
+  <a href="#" className="next"  onClick={this.handleClick.bind(this)}>&raquo;</a>
+////////////////
+else if (this.state.counter === 2) {
+      return (
+        <div className="Items-productCard">
+          <a href="#" className="previous" onClick={this.handleClickAgain.bind(this)}>&laquo;</a>
           <div className="Items-layoutColumn">
             <div className="App-title">
                 Similar Items
                 <Similar newItems={this.state.itemList} />  
             </div>
-          </div>         
-          <a href="#" className="next"  onClick={this.handleClick.bind(this)}>&raquo;</a>
+          </div>  
         </div>
       ); 
     }
-  }
-}
+*/
