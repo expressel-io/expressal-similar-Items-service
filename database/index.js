@@ -58,6 +58,15 @@ const find = (paramId, callback) => {
   Prod.find({ "itemId": { $gt: paramId } }).limit(5).exec(callback);
 };
 
+const findPrevious = (paramId, callback) => {
+  // Prod.find({}).sort('-size').limit(5).exec(callback);
+  Prod.find({
+    "min" : {
+        $gte : paramId
+    }
+})
+};
+
 const findById = (paramId, callback) => {   
   Prod.find( { "itemId" : paramId } ).limit(5).exec(callback);
 };

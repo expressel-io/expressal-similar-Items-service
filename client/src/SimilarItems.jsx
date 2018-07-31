@@ -10,9 +10,9 @@ export default class SimilarItems extends Component {
     this.state = {
       itemList: [],
       itemId: 1,
+      counter: 0,
     };
   }
-
 
   componentDidMount() {
     const { itemId } = this.state;
@@ -29,11 +29,27 @@ export default class SimilarItems extends Component {
     console.log('clicked')
     const { itemId } = this.state;
     axios.get(`/api/products/next/${itemId}`)
-    // axios.get('/api/products/')
       .then((response) => {
-        console.log('resp', response.data);
-        this.setState({ itemId: response.data[0].itemId})
-        console.log('resp', response.data[0].itemId);
+        this.setState({ itemId: response.data[0].itemId});
+        const newCounter = this.state.counter;
+        this.setState({ counter: newCounter+1 });
+        console.log('count', newCounter+1);
+        this.setState({ itemList: response.data });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  handleClickAgain() {
+    console.log('clicked');
+    const { itemId } = this.state;
+    axios.get(`/api/products/previous/${itemId}`)
+      .then((response) => {
+        this.setState({ itemId: response.data[0].itemId});
+        const newCounter = this.state.counter;
+        this.setState({ counter: newCounter-1 });
+        console.log('count', newCounter-1);
         this.setState({ itemList: response.data });
       })
       .catch((error) => {
@@ -42,18 +58,31 @@ export default class SimilarItems extends Component {
   }
 
   render() {
-    return (
-      <div className="Items-productCard">
-        <div className="Items-layoutColumn">
-          <div className="App-title">
+    if (this.state.counter === 0) {
+      return (
+        <div className="Items-productCard">
+          <div className="Items-layoutColumn">
+            <div className="App-title">
               Similar Items
-              <Similar newItems={this.state.itemList} />
-              
-          </div>
-
-        </div> 
+            <Similar newItems={this.state.itemList} />  
+            </div>
+          </div> 
+          <a href="#" className="next" onClick={this.handleClick.bind(this)}>&raquo;</a>
+        </div>
+      );
+    } else {
+      return (
+        <div className="Items-productCard">
+          <a href="#" class="previous" onClick={this.handleClickAgain.bind(this)}>&laquo;</a>
+          <div className="Items-layoutColumn">
+            <div className="App-title">
+                Similar Items
+                <Similar newItems={this.state.itemList} />  
+            </div>
+          </div>         
           <a href="#" className="next"  onClick={this.handleClick.bind(this)}>&raquo;</a>
-      </div>
-    );
+        </div>
+      ); 
+    }
   }
 }

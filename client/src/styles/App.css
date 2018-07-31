@@ -53,8 +53,24 @@ a:hover{
   
     color: #4285f4;
  
-    
 }
+
+.previous {
+    margin-top:167px;
+    font-size: 40px;
+    height: 64px;
+    width: 32px;
+    color:rgba(0,0,0.54);
+    margin-left: 0;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: currentColor;
+    font-family: 'Material Icons';
+    direction: ltr;
+    cursor: pointer;
+    float: left;
+}
+
 
 /*.App-product-carousel-container {
     display: block;

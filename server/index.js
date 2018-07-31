@@ -36,6 +36,22 @@ app.get('/api/products/next/:prodId', (req, res) => {
   });
 });
 
+app.get('/api/products/previous/:prodId', (req, res) => { 
+    // DB.find((err, prods) => {
+    // if (err) {
+    //   res.status(502).send(err);
+    // } else {
+    //   res.send(prods);
+  const productId = parseInt(req.params.prodId);
+  DB.findPrev(productId, (err, results) => {
+    if (err) {
+      res.status(502).send(err);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
 app.get('/api/products/:prodId', (req, res) => {
   const productId = parseInt(req.params.prodId);
   DB.findById(productId, (err, results) => {
@@ -45,6 +61,7 @@ app.get('/api/products/:prodId', (req, res) => {
       res.send(results);
     }
   });
+
 });
 
 app.listen(port, () => {
