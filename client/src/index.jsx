@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import SimilarItems from './SimilarItems.jsx';
 
 ReactDOM.render (
-  <App />, 
+  <SimilarItems />, 
   document.getElementById('app')
 );

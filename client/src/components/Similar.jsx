@@ -4,7 +4,7 @@ import Items from './Items.jsx';
 import '../styles/App.css';
 import '../styles/Items.css';
 
-export default class Sim extends Component {
+export default class Similar extends Component {
   constructor(props, context) {
     super(props, context);
     // this.state = {

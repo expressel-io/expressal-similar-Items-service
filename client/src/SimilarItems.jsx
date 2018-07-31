@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Sim from './components/Sim';
+import Similar from './components/Similar';
 import './styles/Items.css';
 import './styles/App.css';
 
-export default class App extends Component {
+export default class SimilarItems extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +38,7 @@ export default class App extends Component {
         <div className="Items-layoutColumn">
           <div className="App-title">
               Similar Items
-              <Sim newItems={this.state.itemList} />
+              <Similar newItems={this.state.itemList} />
           </div>
         </div>
       </div>
