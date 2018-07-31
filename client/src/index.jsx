@@ -4,5 +4,5 @@ import SimilarItems from './SimilarItems.jsx';
 
 ReactDOM.render (
   <SimilarItems />, 
-  document.getElementById('app')
+  document.getElementById('similarItems')
 );
