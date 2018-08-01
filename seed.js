@@ -115,7 +115,7 @@ const populateData = () => {
   for (let i = 1; i < 200; i++) {
     const item = {
       id: i,
-      itemId: Math.ceil(i/5),
+      itemId: Math.ceil(i/15),
       imgPath: imgPathArr[i],
       price: generatePriceFunc(),
       deliveryCost: generateDeliveryCostFunc(),
