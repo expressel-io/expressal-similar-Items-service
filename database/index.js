@@ -55,20 +55,20 @@ saveList(data, (err, product) => {
 
 const find = (paramId, callback) => {
   // Prod.find({}).sort('-size').limit(5).exec(callback);
-  Prod.find({ "itemId": { $gt: paramId } }).limit(10).exec(callback);
+  Prod.find({ "itemId": { $gt: paramId } }).limit(5).exec(callback);
 };
 
-// const findPrev = (paramId, callback) => {
-//   // Prod.find({}).sort('-size').limit(5).exec(callback);
-//   Prod.find({
-//     "min" : {
-//         $gte : paramId
-//     }
-// })
-// };
+const findPrev = (paramId, callback) => {
+  // Prod.find({}).sort('-size').limit(5).exec(callback);
+  Prod.find({
+    "min" : {
+        $gte : paramId
+    }
+})
+};
 
 const findById = (paramId, callback) => {   
-  Prod.find( { "itemId" : paramId } ).limit(5).exec(callback);
+  Prod.find( { "itemId" : paramId } ).limit(15).exec(callback);
 };
 
 module.exports.saveList = saveList;
