@@ -20,10 +20,8 @@ export default class SimilarItems extends Component {
   componentDidMount() {
     // const { itemId } = this.state;
     let id = parseInt(window.location.pathname.split('/')[2]);
-    console.log(id);
-    console.log('start')
     const self = this;
-    axios.get(`/api/products/${id}`)
+    axios.get(`http://localhost:3004/api/products/${id}`)
       .then((response) => {
         self.setState({ test: response.data, loaded: true });
       })
