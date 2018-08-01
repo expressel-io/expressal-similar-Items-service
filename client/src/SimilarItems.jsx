@@ -9,97 +9,93 @@ export default class SimilarItems extends Component {
     super(props);
     this.state = {
       itemList: [],
-      newItemList: [],
-      itemId: 1,
+       itemId: 1,
       counter: 0,
+      test: 0,
+      loaded: false,
     };
+
   }
 
   componentDidMount() {
     const { itemId } = this.state;
+    console.log('start')
+    const self = this;
     axios.get(`/api/products/${itemId}`)
       .then((response) => {
-        this.setState({ itemList: response.data });
+        self.setState({ test: response.data, loaded: true });
       })
       .catch((error) => {
         console.error(error);
-      });   
-    this.handleClickAgain();
+      });
   }
 
-  handleClick() {
+  handleNextClick() {
     console.log('clicked')
-    const { itemId } = this.state;
-    axios.get(`/api/products/next/${itemId}`)
-      .then((response) => {
-        this.setState({ itemId: response.data[0].itemId});
-        const newCounter = this.state.counter;
-        this.setState({ counter: newCounter+1 });
-        console.log('count', newCounter+1);
-        const newData = response.data;
-        const newList = this.state.newItemList;
-        this.setState({ itemList: response.data });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const newCounter = this.state.counter;
+    this.setState({ counter: newCounter+1 });
   }
 
-  handleClickAgain() {
-     const { itemId } = this.state;
-    axios.get(`/api/products/${itemId}`)
-      .then((response) => {
-        this.setState({ itemList: response.data });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
-
-   handleFirstClick() {
-    // const { itemId } = this.state;
-    axios.get(`/api/products/1`)
-      .then((response) => {
-        this.setState({ itemList: response.data });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+  handleBackClick() {
+    const newCounter = this.state.counter;
+    this.setState({ counter: newCounter-1 });
   }
 
   render() {
-    if (this.state.counter === 0) {
+    if (this.state.loaded) {
+      var data = this.state.test
+      var part1 = data.slice(0, 5);
+      var part2 = data.slice(5, 10);
+      var part3 = data.slice(10);
+      console.log(part1, part2, part3)
+    }
+    if (this.state.loaded && this.state.counter === 0) {
       return (
         <div className="Items-productCard">
           <div className="Items-layoutColumn">
             <div className="App-title">
               Similar Items
-            <Similar newItems={this.state.itemList} />  
+            <Similar newItems={part1} />  
             </div>
           </div> 
-          <a href="#" className="next" onClick={this.handleClick.bind(this)}>&raquo;</a>
+          <a href="#" className="next" onClick={this.handleNextClick.bind(this)}>&raquo;</a>
         </div>
       );
-    } else if (this.state.counter ===1 ) {
+    } else if (this.state.loaded && this.state.counter === 1 ) {
       return (
         <div className="Items-productCard">
-          <a href="#" className="previous" onClick={this.handleFirstClick.bind(this)}>&laquo;</a>
+          <a href="#" className="previous" onClick={this.handleBackClick.bind(this)}>&laquo;</a>
           <div className="Items-layoutColumn">
             <div className="App-title">
                 Similar Items
-                <Similar newItems={this.state.itemList} />  
+                <Similar newItems={part2} />  
 
             </div>
           </div>         
-        
+          <a href="#" className="next"  onClick={this.handleNextClick.bind(this)}>&raquo;</a>
+        </div>
+      );  
+    } else if (this.state.loaded && this.state.counter === 2) {
+      return (
+        <div className="Items-productCard">
+          <a href="#" className="previous" onClick={this.handleBackClick.bind(this)}>&laquo;</a>
+          <div className="Items-layoutColumn">
+            <div className="App-title">
+                Similar Items
+                <Similar newItems={part3} />  
+            </div>
+          </div>  
         </div>
       ); 
-    } 
+    }
+    return (
+      <div></div>
+    )
   }
 }
 
 /*
-  <a href="#" className="next"  onClick={this.handleClick.bind(this)}>&raquo;</a>
+
 ////////////////
 else if (this.state.counter === 2) {
       return (
@@ -114,4 +110,17 @@ else if (this.state.counter === 2) {
         </div>
       ); 
     }
+*/
+/*
+ const { itemId } = this.state;
+    console.log('start')
+    const self = this;
+    axios.get(`/api/products/${itemId}`)
+      .then((response) => {
+      self.setState({ test: response.data, loaded: true}, () => console.log(self.state.test))
+      });
+       
+    this.handleClickAgain();
+
+
 */
