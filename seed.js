@@ -40,7 +40,7 @@ const generateImagePath = () => {
   }
   return imgPathArr;
 };
-// generateImagePath();
+ generateImagePath();
 
 let itemList = [
   {
@@ -112,7 +112,7 @@ let itemList = [
 ];
 
 const populateData = () => {
-  for (let i = 6; i < 200; i++) {
+  for (let i = 1; i < 200; i++) {
     const item = {
       id: i,
       itemId: Math.ceil(i/5),
@@ -128,7 +128,7 @@ const populateData = () => {
   }
   return itemList;
 };
-// populateData();
+ populateData();
 
 module.exports.itemList = itemList;
 module.exports.populateData = populateData;

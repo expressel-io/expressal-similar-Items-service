@@ -23,8 +23,8 @@ const prodSchema = mongoose.Schema({
 });
 
 const Prod = mongoose.model('Prod', prodSchema);
-const imgPathArr = seed.generateImagePath();
-const data = seed.populateData();
+const imgPathArr = seed.generateImagePath;
+const data = seed.populateData;
 
 
 const saveList = (itemData, cb) => {
@@ -55,17 +55,17 @@ saveList(data, (err, product) => {
 
 const find = (paramId, callback) => {
   // Prod.find({}).sort('-size').limit(5).exec(callback);
-  Prod.find({ "itemId": { $gt: paramId } }).limit(5).exec(callback);
+  Prod.find({ "itemId": { $gt: paramId } }).limit(15).exec(callback);
 };
 
-const findPrev = (paramId, callback) => {
-  // Prod.find({}).sort('-size').limit(5).exec(callback);
-  Prod.find({
-    "min" : {
-        $gte : paramId
-    }
-})
-};
+// const findPrev = (paramId, callback) => {
+//   // Prod.find({}).sort('-size').limit(5).exec(callback);
+//   Prod.find({
+//     "min" : {
+//         $gte : paramId
+//     }
+// })
+// };
 
 const findById = (paramId, callback) => {   
   Prod.find( { "itemId" : paramId } ).limit(15).exec(callback);
