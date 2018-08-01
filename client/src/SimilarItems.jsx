@@ -9,8 +9,8 @@ export default class SimilarItems extends Component {
     super(props);
     this.state = {
       itemList: [],
-       itemId: 1,
       counter: 0,
+      itemId:'',
       test: 0,
       loaded: false,
     };
@@ -18,10 +18,12 @@ export default class SimilarItems extends Component {
   }
 
   componentDidMount() {
-    const { itemId } = this.state;
+    // const { itemId } = this.state;
+    let id = parseInt(window.location.pathname.split('/')[2]);
+    console.log(id);
     console.log('start')
     const self = this;
-    axios.get(`/api/products/${itemId}`)
+    axios.get(`/api/products/${id}`)
       .then((response) => {
         self.setState({ test: response.data, loaded: true });
       })
