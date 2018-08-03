@@ -18,16 +18,19 @@ export default class SimilarItems extends Component {
   }
 
   componentDidMount() {
+
     // const { itemId } = this.state;
     let id = parseInt(window.location.pathname.split('/')[2]);
     const self = this;
-    axios.get(`http://localhost:3004/api/products/${id}`)
+    axios.get(`http://localhost:3004/api/item/${id}`)
+
       .then((response) => {
         self.setState({ test: response.data, loaded: true });
       })
       .catch((error) => {
         console.error(error);
       });
+      console.log("mounted");
   }
 
   handleNextClick() {
@@ -42,6 +45,7 @@ export default class SimilarItems extends Component {
   }
 
   render() {
+    console.log("here")
     if (this.state.loaded) {
       var data = this.state.test
       var part1 = data.slice(0, 5);

@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const seed = require('../seed.js')
 
 mongoose.connect('mongodb://localhost/fetcher');
+// mongoose.connect('mongodb://database/fetcher');
+
+// exports.initializeMongo = function () {
+//   mongoose.connect(DATABASE_CONNECTION);
+// }
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -23,8 +28,8 @@ const prodSchema = mongoose.Schema({
 });
 
 const Prod = mongoose.model('Prod', prodSchema);
-const imgPathArr = seed.generateImagePath;
-const data = seed.populateData;
+const imgPathArr = seed.generateImagePath();
+const data = seed.populateData();
 
 
 const saveList = (itemData, cb) => {

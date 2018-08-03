@@ -40,7 +40,7 @@ const generateImagePath = () => {
   }
   return imgPathArr;
 };
- generateImagePath();
+// generateImagePath();
 
 let itemList = [
   {
@@ -128,7 +128,7 @@ const populateData = () => {
   }
   return itemList;
 };
- populateData();
+// populateData();
 
 module.exports.itemList = itemList;
 module.exports.populateData = populateData;

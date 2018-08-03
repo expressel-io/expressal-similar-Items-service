@@ -8,8 +8,10 @@ const DB = require('../database/index.js');
 const app = express();
 app.use(cors());
 
-const port = 3004;
+// const port = 3004;
+const port = 3000;
 
+// DB.initializeMongo();
 
 
 app.use(bodyParser.json());
@@ -17,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.use('/products/:itemId', express.static(__dirname + '/../client/dist'));
+app.use('/item/:id', express.static(__dirname + '/../client/dist'));
 
 // app.use('/static', express.static(path.join(__dirname, 'public')));
 
@@ -27,21 +29,21 @@ app.use((req, res, next) => {
 });
 
 
-app.get('/api/products/next/:prodId', (req, res) => { 
-    // DB.find((err, prods) => {
-    // if (err) {
-    //   res.status(502).send(err);
-    // } else {
-    //   res.send(prods);
-  const productId = parseInt(req.params.prodId);
-  DB.find(productId, (err, results) => {
-    if (err) {
-      res.status(502).send(err);
-    } else {
-      res.send(results);
-    }
-  });
-});
+// app.get('/api/products/next/:prodId', (req, res) => { 
+//     // DB.find((err, prods) => {
+//     // if (err) {
+//     //   res.status(502).send(err);
+//     // } else {
+//     //   res.send(prods);
+//   const productId = parseInt(req.params.prodId);
+//   DB.find(productId, (err, results) => {
+//     if (err) {
+//       res.status(502).send(err);
+//     } else {
+//       res.send(results);
+//     }
+//   });
+// });
 
 // app.get('/api/products/previous/:prodId', (req, res) => { 
 //     // DB.find((err, prods) => {
