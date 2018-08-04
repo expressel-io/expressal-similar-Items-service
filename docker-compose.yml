@@ -2,18 +2,13 @@ version: '3'
 
 services:
   app:
-    image: "my-app:latest"
+    image: "my-app"
     depends_on:
-      -"database"
+      - 'database'
     ports:
-      - "3000:3000"
-    # volumes:
-    #   -./expressal-similar-Items-service/client
-    #   -/expressal-similar-Items-service/client/dist/node_modules
-   
+      - '3000:3000'
 
-database:
-  image: mongo:3:6:6
-  ports:
-    -"27017:27017"
-
+  database:
+    image: mongo:3.6.6
+    ports:
+      - '27017:27017'  

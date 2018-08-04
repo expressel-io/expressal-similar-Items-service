@@ -1,12 +1,12 @@
 const express = require('express');
 
-const cors = require('cors')
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
 const DB = require('../database/index.js');
 
 const app = express();
-app.use(cors());
+// app.use(cors());
 
 // const port = 3004;
 const port = 3000;
@@ -17,16 +17,20 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/item/:prodId/', express.static(__dirname + '/../client/dist'));
+
 app.use(express.static(__dirname + '/../client/dist'));
-
-app.use('/item/:id', express.static(__dirname + '/../client/dist'));
-
-// app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
   console.log(`serving ${req.method} request at ${req.url}`);
   next();
 });
+
+
+
+// app.use('/static', express.static(path.join(__dirname, 'public')));
+
+
 
 
 // app.get('/api/products/next/:prodId', (req, res) => { 
@@ -60,8 +64,11 @@ app.use((req, res, next) => {
 //     }
 //   });
 // });
+// app.get('/products/*', (req,res) => {
+//       res.sendfile(path.join(__dirname, '../client/dist/index.html'));
+//     });
 
-app.get('/api/products/:prodId', (req, res) => {
+app.get('/api/item/:prodId', (req, res) => {
   const productId = parseInt(req.params.prodId);
   DB.findById(productId, (err, results) => {
     if (err) {
