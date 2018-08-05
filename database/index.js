@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const seed = require('../seed.js')
 
-// mongoose.connect('mongodb://localhost/fetcher');
-mongoose.connect('mongodb://database:27017/fetcher');
+ // mongoose.connect('mongodb://localhost/fetcher');
+ mongoose.connect('mongodb://database:27017/fetcher');
 
 // exports.initializeMongo = function () {
 //   mongoose.connect(DATABASE_CONNECTION);

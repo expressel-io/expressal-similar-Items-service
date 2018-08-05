@@ -9,7 +9,7 @@ export default class SimilarItems extends Component {
     super(props);
     this.state = {
       itemList: [],
-      counter: 0,
+      counterButtons: 0,
       itemId:'',
       test: 0,
       loaded: false,
@@ -36,13 +36,13 @@ export default class SimilarItems extends Component {
 
   handleNextClick() {
     console.log('clicked')
-    const newCounter = this.state.counter;
-    this.setState({ counter: newCounter+1 });
+    const newCounterButtons = this.state.counterButtons;
+    this.setState({ counterButtons: newCounterButtons+1 });
   }
 
   handleBackClick() {
-    const newCounter = this.state.counter;
-    this.setState({ counter: newCounter-1 });
+    const newCounterButtons = this.state.counterButtons;
+    this.setState({ counterButtons: newCounterButtons-1 });
   }
 
   render() {
@@ -54,7 +54,7 @@ export default class SimilarItems extends Component {
       var part3 = data.slice(10);
       console.log(part1, part2, part3)
     }
-    if (this.state.loaded && this.state.counter === 0) {
+    if (this.state.loaded && this.state.counterButtons === 0) {
       return (
         <div className="Items-productCard">
           <div className="Items-layoutColumn">
@@ -66,7 +66,7 @@ export default class SimilarItems extends Component {
           <a href="#" className="next" onClick={this.handleNextClick.bind(this)}>&raquo;</a>
         </div>
       );
-    } else if (this.state.loaded && this.state.counter === 1 ) {
+    } else if (this.state.loaded && this.state.counterButtons === 1 ) {
       return (
         <div className="Items-productCard">
           <a href="#" className="previous" onClick={this.handleBackClick.bind(this)}>&laquo;</a>
@@ -80,7 +80,7 @@ export default class SimilarItems extends Component {
           <a href="#" className="next"  onClick={this.handleNextClick.bind(this)}>&raquo;</a>
         </div>
       );  
-    } else if (this.state.loaded && this.state.counter === 2) {
+    } else if (this.state.loaded && this.state.counterButtons === 2) {
       return (
         <div className="Items-productCard">
           <a href="#" className="previous" onClick={this.handleBackClick.bind(this)}>&laquo;</a>
@@ -102,7 +102,7 @@ export default class SimilarItems extends Component {
 /*
 
 ////////////////
-else if (this.state.counter === 2) {
+else if (this.state.counterButtons === 2) {
       return (
         <div className="Items-productCard">
           <a href="#" className="previous" onClick={this.handleClickAgain.bind(this)}>&laquo;</a>

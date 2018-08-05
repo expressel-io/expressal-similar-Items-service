@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: "my-app"
+    image: "my-app-2"
     depends_on:
       - 'database'
     ports:
