@@ -7,10 +7,6 @@ import '../styles/Items.css';
 export default class Similar extends Component {
   constructor(props, context) {
     super(props, context);
-    // this.state = {
-    //   lowLimit: 0,
-    //   highLimit: 4,
-    // };
     this.handleClick = this.handleClick.bind(this);
   }
 

@@ -19,11 +19,9 @@ export default class SimilarItems extends Component {
 
   componentDidMount() {
 
-    // const { itemId } = this.state;
     let prodId = parseInt(window.location.pathname.split('/')[2]);
     const self = this;
     axios.get(`/api/item/${prodId}`)
-          // console.log(prodId);
       .then((response) => {
 
         self.setState({ test: response.data, loaded: true });
@@ -99,33 +97,3 @@ export default class SimilarItems extends Component {
   }
 }
 
-/*
-
-////////////////
-else if (this.state.counterButtons === 2) {
-      return (
-        <div className="Items-productCard">
-          <a href="#" className="previous" onClick={this.handleClickAgain.bind(this)}>&laquo;</a>
-          <div className="Items-layoutColumn">
-            <div className="App-title">
-                Similar Items
-                <Similar newItems={this.state.itemList} />  
-            </div>
-          </div>  
-        </div>
-      ); 
-    }
-*/
-/*
- const { itemId } = this.state;
-    console.log('start')
-    const self = this;
-    axios.get(`/api/products/${itemId}`)
-      .then((response) => {
-      self.setState({ test: response.data, loaded: true}, () => console.log(self.state.test))
-      });
-       
-    this.handleClickAgain();
-
-
-*/

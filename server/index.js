@@ -6,13 +6,8 @@ const path = require('path');
 const DB = require('../database/index.js');
 
 const app = express();
-// app.use(cors());
 
-// const port = 3004;
 const port = 3000;
-
-// DB.initializeMongo();
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,47 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-// app.use('/static', express.static(path.join(__dirname, 'public')));
-
-
-
-
-// app.get('/api/products/next/:prodId', (req, res) => { 
-//     // DB.find((err, prods) => {
-//     // if (err) {
-//     //   res.status(502).send(err);
-//     // } else {
-//     //   res.send(prods);
-//   const productId = parseInt(req.params.prodId);
-//   DB.find(productId, (err, results) => {
-//     if (err) {
-//       res.status(502).send(err);
-//     } else {
-//       res.send(results);
-//     }
-//   });
-// });
-
-// app.get('/api/products/previous/:prodId', (req, res) => { 
-//     // DB.find((err, prods) => {
-//     // if (err) {
-//     //   res.status(502).send(err);
-//     // } else {
-//     //   res.send(prods);
-//   const productId = parseInt(req.params.prodId);
-//   DB.findPrev(productId, (err, results) => {
-//     if (err) {
-//       res.status(502).send(err);
-//     } else {
-//       res.send(results);
-//     }
-//   });
-// });
-// app.get('/products/*', (req,res) => {
-//       res.sendfile(path.join(__dirname, '../client/dist/index.html'));
-//     });
 
 app.get('/api/item/:prodId', (req, res) => {
   const productId = parseInt(req.params.prodId);
